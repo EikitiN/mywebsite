@@ -1,0 +1,27 @@
+body{
+    padding: 2%;
+    background-color: #f2f3e8;
+    color: #1A1A1A;
+}
+p{
+    font-size: 13pt;
+    line-height: 1.6;
+}
+
+/*機能*/
+.topic{
+    position: relative;
+    padding: 20px 10px 10px;
+    border: #1A1A1A dashed 2px;
+    border-radius: 5px;
+}
+.topic-title {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    transform: translateY(-100%);
+    background-color: #f2f3e8; 
+    padding: 0 8px;
+    font-weight: bold;
+    color: #1A1A1A;
+}
