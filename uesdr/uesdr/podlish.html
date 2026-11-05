@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ja">
+    <head prefix="og: https://ogp.me/ns#">
+        <meta charset="UTF-8" />
+		<link rel="icon" href="../favicon.png"> 
+		<link rel="shortcut icon" href="../favicon.png">
+		<link rel="apple-touch-icon" href="../favicon.png"> 
+		<link rel="stylesheet" href="../mobile.css" type="text/css" media="screen and (max-width: 749px)">
+		<link rel="stylesheet" href="../pc.css" type="text/css" media="screen and (min-width: 750px)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="パトサの英語、パトリッシュ"/>
+		<meta property="og:title" content="パトリッシュの文法｜UESDR-エ連邦"/>
+		<meta property="og:url" content="https://eikitin.github.io/mywebsite/uesdr/uesdr/podlish.html"/>
+		<meta property="og:image" content="https://eikitin.github.io/mywebsite/uesdr/index/top-1.png"/>
+		<meta name="keywords" content="パトサ,英語,パトリッシュ,文法,解説" />
+		<meta name="author" content="エイキチ(エ連邦)" />
+		<script src="../js/header.js"></script>
+		<script>
+			function updateStylesheet() {
+				const width = window.innerWidth;
+				const height = window.innerHeight;
+				let cssFile;
+				if (width < 750) {
+					cssFile = "mobile.css";
+				} else if (height > width) {
+					cssFile = "tablet.css";
+				} else {
+					cssFile = "pc.css";
+				}
+				let existingLink = document.getElementById("dynamic-css");
+				if (existingLink) {
+					existingLink.remove();
+				}
+				let link = document.createElement("link");
+				link.id = "dynamic-css";
+				link.rel = "stylesheet";
+				link.href = cssFile;
+				link.type = "text/css";
+				document.head.appendChild(link);
+			}
+			window.addEventListener("resize", updateStylesheet);
+			window.addEventListener("load", updateStylesheet);
+		</script>
+		<style>
+			article.eg{
+				margin: 2px 10px;
+				padding: 10px;
+				background-color: #ccc;
+				border: solid 1.75px #999;
+				border-radius: 5px;
+			}
+			article.aaa{
+				margin: 2px 3px;
+				padding: 10px;
+				background-color: rgb(255,202,219);
+				border: solid 1.75px rgb(273,28,36);
+				border-radius: 5px;
+			}
+		</style>
+        <title>パトリッシュ</title>
+    </head>
+    <body>
+		<header id="header" data-header-text="パトリッシュ"></header>
+	<section class="body">
+		<section class="pagelink">
+			<p id="font-ML">レッスン一覧</p>
+			<a href="#レッスン1">レッスン1 アルファベットと発音</a><br />
+			<a href="#レッスン2">レッスン2 基本的な挨拶と自己紹介</a><br />
+			<a href="#レッスン3">レッスン3 名詞の性と数</a><br />
+		</section>
+		<!-- テンプレート
+		<section id="レッスン〇">
+			<h2>レッスン〇 ～～～～～</h2>
+			<section class="lesson">
+			<article class="main">
+			説明<br />
+			<div class="fromJSON" id="lesson〇-〇" />
+			<article class="eg">
+			例文等<br />
+			<div class="fromJSON" id="lesson〇-〇" />
+			</article>
+			</article>
+			<article class="words">
+			進出単語等<br />
+			<div class="fromJSON" id=""></div>
+			</article>
+			</section>
+		</section>
+		-->
+		<section id="レッスン1">
+			<h2>レッスン1 アルファベットと発音</h2>
+			<section class="lesson">
+			<article class="main">
+			ラテン文字を用いて表記します。<br />
+			発音も英語と同じものを用いるが、下の特徴的な発音はロシア語由来のものです。<br />
+			特徴的な発音↓<br />
+			<article class="eg">
+			R/rは後部歯茎接近音[ɹ̠](英語のRの発音)ではなく、歯茎ふるえ音[r](Р(キリル文字)と同じ発音)<br />
+			egoなどは、evo /jɪˈvo/の発音になるなど、文字は英語のラテン文字を用いるが、発音はロシア語のまま<br />
+			アクセントの無いoはaの音になったり、yaがi、(y)e(е(キリル文字))がiになったりもする<br />
+			еはyeやieではなく、eとなる<br />
+			最後の子音、子音群は無声化する<br />
+			</article>
+				<section style="display: flex; justify-content: space-around;">
+					<article class="aaa">
+					<div class="fromJSON" id="lesson1-1" />
+					</article>
+					<article class="aaa">
+					<div class="fromJSON" id="lesson1-2" />
+					</article>
+					<article class="aaa">
+					<div class="fromJSON" id="lesson1-3" />
+					</article>
+				</section>
+			</article>
+			<article class="words">
+			読んでみましょう<br />
+			<div class="fromJSON" id="lesson1"></div>
+			</article>
+			</section>
+		</section>
+		<section id="レッスン2">
+			<h2>レッスン2 基本的な挨拶と自己紹介</h2>
+			<section class="lesson">
+			<article class="main">
+			<article class="eg">
+			例文<br />
+			<div class="fromJSON" id="lesson2-1"></div>
+			</article>
+			<div class="fromJSON" id="lesson2-2" />
+			<article class="eg">
+			<div class="fromJSON" id="lesson2-4"></div>
+			</article>
+			</article>
+			<article class="words">
+			進出単語等<br />
+			<div class="fromJSON" id="lesson2-3" />
+			</article>
+			</section>
+		</section>
+		<section id="レッスン3">
+			<h2>レッスン3 名詞の性と数</h2>
+			<section class="lesson">
+			<article class="main">
+			説明<br />
+			<div class="fromJSON" id="lesson3-1" />
+			<article class="eg">
+			例文等<br />
+			<div class="fromJSON" id="lesson3-2" />
+			</article>
+			</article>
+			<article class="words">
+			進出単語等<br />
+			<div class="fromJSON" id="3-3"></div>
+			</article>
+			</section>
+		</section>
+		<article>
+			<h2>パトリッシュの設定</h2>
+			<p><b>以前Pixivに投稿したものです。</b></p>
+			<div class="fromJSON" id="oldtypeatpixiv"></div>
+		</article>
+	</section>
+		<script src="../js/footer.js"></script>
+		<script src="../js/json.js"></script>
+    </body>
+</html>

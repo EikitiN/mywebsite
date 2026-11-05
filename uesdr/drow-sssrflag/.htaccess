@@ -1,0 +1,15 @@
+# BEGIN REMOVE .html EXTENSION
+# 1. .htmlが付いたURLにアクセスした場合、.htmlを削除したURLにリダイレクト
+RewriteEngine on
+RewriteCond %{THE_REQUEST} \s/([^\s]+)\.html [NC]
+RewriteRule ^(.*)\.html$ /drow-sssrflag/$1 [R=301,L]
+
+# 2. .htmlを消して内部で処理するルール
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 3. index.htmlを /drow-sssrflag/ にリダイレクトするルール
+RewriteCond %{THE_REQUEST} \s/([^/]+)\.html [NC]
+RewriteRule ^index\.html$ /drow-sssrflag/ [R=301,L]
+# END REMOVE .html EXTENSION

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja" style="background-color: #ffdda0;">
+    <head>
+        <meta charset="UTF-8" />
+		<link rel="icon" href="../favicon.png"> 
+		<link rel="shortcut icon" href="../favicon.png">
+		<link rel="apple-touch-icon" href="../favicon.png"> 
+		<link rel="stylesheet" href="../mobile.css" type="text/css" media="screen and (max-width: 749px)">
+		<link rel="stylesheet" href="../pc.css" type="text/css" media="screen and (min-width: 750px)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="ソ連国旗の星の作図の方法"/>
+		<head prefix="og: https://ogp.me/ns#">
+		<meta property="og:title" content="ソ連国旗の星の作図｜UESDR-エ連邦"/>
+		<meta property="og:url" content="https://eikitin.github.io/mywebsite/uesdr/drow-sssrflag/hoshi.html/">
+		<meta property="og:image" content="https://eikitin.github.io/mywebsite/uesdr/index/top-1.png"/>
+		<meta name="keywords" content="ソ連,国旗,作図" />
+		<meta name="author" content="エイキチ(エ連邦)" />
+		<script src="../js/header.js"></script>
+		<script>
+			function updateStylesheet() {
+				const width = window.innerWidth;
+				const height = window.innerHeight;
+				let cssFile;
+				if (width < 750) {
+					cssFile = "../mobile.css";
+				} else if (height > width) {
+					cssFile = "../tablet.css";
+				} else {
+					cssFile = "../pc.css";
+				}
+				let existingLink = document.getElementById("dynamic-css");
+				if (existingLink) {
+					existingLink.remove();
+				}
+				let link = document.createElement("link");
+				link.id = "dynamic-css";
+				link.rel = "stylesheet";
+				link.href = cssFile;
+				link.type = "text/css";
+				document.head.appendChild(link);
+			}
+			window.addEventListener("resize", updateStylesheet);
+			window.addEventListener("load", updateStylesheet);
+		</script>
+        <title>ソ連国旗の星の書き方</title>
+		<style>
+			section{display: flex; flex-wrap: wrap;}
+			article{margin: 10px;}
+		</style>
+    </head>
+    <body>
+		<header id="header" data-header-text="ソ連国旗の星の作図"></header>
+	<section class="body">
+		<h2>ソ連国旗の星の作図</h2>
+		<p>極力無駄な説明を省きました！<br />
+		作図の方法(二等分線の作図、内接円の書き方、線分の等分方法など)は知っている前提で書かれています<br />
+		そのようなところも確認したい人は下のYouTubeの私の動画を見てください</p>
+		<iframe id="youtube" src="https://www.youtube.com/embed/-3lI8QB3y6Q?si=yysBPM5lGGWyLXJE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br />
+		<p>言っちゃえば、ほとんどはただ正五角形の書き方をやってるだけなのですが…</p>
+		<p>今回は円をちゃんとやった↓↓</p>
+		<section>
+		<article>
+		鎌まで書き終わった様子
+		<img src="4/0.png" style="display: block;" id="ML"/>
+		</article>
+		<article>
+		半径2.5の円を書いて星の形のガイドを作る
+		<img src="4/1.png" style="display: block;" id="wML"/>
+		</article>
+		<article>
+		さっき書いた円で作業する
+		<img src="4/2.png" style="display: block;" id="ML"/>
+		</article>
+		<article>
+		図のようにする
+		<img src="4/3.png" style="display: block;" id="ML"/>
+		</article>
+		<article>
+		頂点の位置に移す
+		<img src="4/4.png" style="display: block;" id="ML"/>
+		</article>
+		<article>
+		五本の腕を伸ばす
+		<img src="4/5.png" style="display: block;" id="ML"/>
+		</article>
+		<article>
+		内側に図のように円を書く
+		<img src="4/6.png" style="display: block;" id="ML"/>
+		</article>
+		<article>
+		星形を書く
+		<img src="4/7.png" style="display: block;" id="ML"/>
+		</article>
+		<article>
+		色を塗った
+		<img src="4/8.png" style="display: block;" id="ML"/>
+		</article>
+		<article>
+		完成
+		<img src="4/9.png" style="display: block;" id="wML"/>
+		</article>
+		</section>
+	</section>
+		<footer style="background-color: #a0ff80; text-align: center;　 display: flex;">
+			<div>
+			←<a href="kama2.html">鎌の書き方2</a>
+			<nobr>&emsp;&emsp;</nobr>
+			<a href="drow-sssrflag.html">ソ連国旗作図ホーム</a>
+			<nobr>&emsp;&emsp;</nobr>
+			<a href="drow-sssrflag.html">ソ連国旗作図ホーム</a>→
+			</div>
+		</footer>
+		<div style="clear: both;"></div>
+		<script src="../js/footer.js"></script>
+    </body>
+</html>

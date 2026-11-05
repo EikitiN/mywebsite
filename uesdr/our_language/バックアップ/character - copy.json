@@ -1,0 +1,170 @@
+[
+{
+	"data" : "a",
+	"sub" : "a",
+	"sub_big" : "A",
+	"character" : "合"
+},
+{
+	"data" : "b",
+	"sub" : "b",
+	"sub_big" : "B",
+	"character" : "B"
+},
+{
+	"data" : "c",
+	"sub" : "c",
+	"sub_big" : "C",
+	"character" : "冫"
+},
+{
+	"data" : "d",
+	"sub" : "d",
+	"sub_big" : "D",
+	"character" : "土"
+},
+{
+	"data" : "1",
+	"sub" : "ð",
+	"sub_big" : "Ð",
+	"character" : "Ð"
+},
+{
+	"data" : "e",
+	"sub" : "e",
+	"sub_big" : "E",
+	"character" : "巴"
+},
+{
+	"data" : "f",
+	"sub" : "f",
+	"sub_big" : "F",
+	"character" : "方"
+},
+{
+	"data" : "g",
+	"sub" : "g",
+	"sub_big" : "G",
+	"character" : "牙"
+},
+{
+	"data" : "h",
+	"sub" : "h",
+	"sub_big" : "H",
+	"character" : "H"
+},
+{
+	"data" : "i",
+	"sub" : "i",
+	"sub_big" : "I",
+	"character" : "尸"
+},
+{
+	"data" : "j",
+	"sub" : "j",
+	"sub_big" : "J",
+	"character" : "J"
+},
+{
+	"data" : "k",
+	"sub" : "k",
+	"sub_big" : "K",
+	"character" : "K"
+},
+{
+	"data" : "l",
+	"sub" : "l",
+	"sub_big" : "L",
+	"character" : "乚"
+},
+{
+	"data" : "m",
+	"sub" : "m",
+	"sub_big" : "M",
+	"character" : "M"
+},
+{
+	"data" : "n",
+	"sub" : "n",
+	"sub_big" : "N",
+	"character" : "N"
+},
+{
+	"data" : "o",
+	"sub" : "o",
+	"sub_big" : "O",
+	"character" : "厷"
+},
+{
+	"data" : "2",
+	"sub" : "ø",
+	"sub_big" : "Ø",
+	"character" : "几"
+},
+{
+	"data" : "p",
+	"sub" : "p",
+	"sub_big" : "P",
+	"character" : "P"
+},
+{
+	"data" : "r",
+	"sub" : "r",
+	"sub_big" : "R",
+	"character" : "R"
+},
+{
+	"data" : "s",
+	"sub" : "s",
+	"sub_big" : "S",
+	"character" : "糸"
+},
+{
+	"data" : "3",
+	"sub" : "ʃ",
+	"sub_big" : "Ʃ",
+	"character" : "Ʃ"
+},
+{
+	"data" : "t",
+	"sub" : "t",
+	"sub_big" : "T",
+	"character" : "T"
+},
+{
+	"data" : "4",
+	"sub" : "þ",
+	"sub_big" : "Þ",
+	"character" : "Þ"
+},
+{
+	"data" : "u",
+	"sub" : "u",
+	"sub_big" : "U",
+	"character" : "于"
+},
+{
+	"data" : "v",
+	"sub" : "v",
+	"sub_big" : "V",
+	"character" : "V"
+},
+{
+	"data" : "w",
+	"sub" : "w",
+	"sub_big" : "W",
+	"character" : "W"
+},
+{
+	"data" : "z",
+	"sub" : "z",
+	"sub_big" : "Z",
+	"character" : "Z"
+},
+{
+	"data" : "5",
+	"sub" : "ʒ",
+	"sub_big" : "Ʒ",
+	"character" : "Ʒ"
+}
+]

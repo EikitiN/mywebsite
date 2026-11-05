@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+		<link rel="icon" href="../favicon.png"> 
+		<link rel="shortcut icon" href="../favicon.png">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<link rel="apple-touch-icon" href="../favicon.png"> 
+		<link rel="stylesheet" href="../mobile.css" type="text/css" media="screen and (max-width: 749px)">
+		<link rel="stylesheet" href="../pc.css" type="text/css" media="screen and (min-width: 750px)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="作品に出てくるキャラクターの紹介"/>
+		<head prefix="og: https://ogp.me/ns#">
+		<meta property="og:title" content="キャラクター紹介｜UESDR-エ連邦"/>
+		<meta property="og:url" content="https://uesdr.web.fc2.com/uesdr/character.html"/>
+		<meta property="og:image" content="https://uesdr.web.fc2.com/index/top-1.png"/>
+		<meta name="keywords" content="エ連邦,エイキチ社会民主主義共和国連邦,エイキチ,パトサ,キャラクター" />
+		<meta name="author" content="エイキチ(エ連邦)" />
+		<script src="../js/header.js"></script>
+		<script>
+			function updateStylesheet() {
+				const width = window.innerWidth;
+				const height = window.innerHeight;
+				let cssFile;
+				if (width < 750) {
+					cssFile = "../mobile.css";
+				} else if (height > width) {
+					cssFile = "../tablet.css";
+				} else {
+					cssFile = "../pc.css";
+				}
+				let existingLink = document.getElementById("dynamic-css");
+				if (existingLink) {
+					existingLink.remove();
+				}
+				let link = document.createElement("link");
+				link.id = "dynamic-css";
+				link.rel = "stylesheet";
+				link.href = cssFile;
+				link.type = "text/css";
+				document.head.appendChild(link);
+			}
+			window.addEventListener("resize", updateStylesheet);
+			window.addEventListener("load", updateStylesheet);
+		</script>
+		<style>
+			:root {
+				--ken-display: none;
+			}
+			:root {
+				--ken-background-color: black;
+			}
+			#ken{color: black; background-color: var(--ken-background-color); display: var(--ken-display);}
+			#ken::selection{color: white; background-color: #3360BE;}
+			img{margin-right: 20px;}
+			@media print {
+				body {
+					display: none;
+				}
+			}
+		</style>
+        <title>キャラクター紹介</title>
+    </head>
+    <body id="sec">
+		<header id="header" data-header-text="キャラクター紹介"></header>
+	<section class="body">
+		<h1>重大な警告</h1>
+		<section style="color: red;">
+			<p color="red"><b>このページではスクリーンショットを禁止しています。スクリーンショットを行うと重大な被害が発生する場合があります。公共の場では絶対にしないでください。音害注意</b></p>
+			<p color="red"><b>このページではデベロッパーツールを禁止しています。開発者ツールの展開を行うと重大な被害が発生する場合があります。公共の場では絶対にしないでください。音害注意</b></p>
+			<p color="red"><b>このページでは、コピー、共有も禁止しています。</b></p>
+		</section>
+		<section class="pagelink">
+			<p id="font-ML">ページ内リンク</p>
+			<a href="#エイキチ">エイキチ</a><br />
+			<a href="#パトサ">パトサ</a><br />
+			<a href="#アナトリー">アナトリー</a><br />
+			<a href="#冬革">冬革</a><br />
+			<a href="#さなか">さなか</a><br />
+		</section>
+		<p style="margin-left: 20px;">イラストは<a href="https://www.pixiv.net/users/91380317">核ガンジー激推し各願寺僧侶だお</a>の作品です。</p>
+		<p style="margin-left: 20px;"><b>警告</b>&emsp;この文書は一部検閲されています。検閲済みの情報への不正アクセスはソビエト社会民主主義共和国連邦内務人民委員部及びエイキチ社会民主主義共和国連邦軍総合情報統制部への通達がなされます。</p>
+		<button onclick="noken()">検閲を解除する</button><b style="color: red;">検閲を解除すると重大な被害が発生する場合があります。公共の場では絶対にしないでください。音害注意</b>
+		<h2 id="エイキチ">エイキチ</h2>
+			<img class="withfloat" id="face" src="eikichi.jpeg" alt="エイキチ"></img>
+			<p><b>本名</b>&emsp;エイキチ・</p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			19歳<br />
+			エイキチ社会民主主義共和国連邦の国家元首、大統領である。<br />
+			ノヴォシビルスク州タタルスキー地区出身。タタール人。<br />
+			水商売の母から生まれた。<br />
+			子供のころから物事の習得・上達が得意で畑仕事の手伝いをしていた。<br />
+			12歳のころ、男性二人に<div id="ken">レイプ</div>されオムスクへ連れていかれる。<br />
+			<div id="ken">青姦</div>の最中にパトサの別荘敷地内へ入り込み、男性二人は<div id="ken"><a href="#パトサ" style="color: black;">パトサ</a>(10)により射殺</div>される。<br />
+			<p style="margin-left: 10px; font-size: 80%;">パトサは、「敷地内で動いてるものは獲物だから撃っちゃっていい!お母様もそういってたもん」</p>
+			パトサに保護され、パトサの家で暮らすようになる。勉強も得意ですぐにロシア語も習得。(昔はタタール語しか喋れなかった)<br />
+			北京大学へ進学。主席。同時にロシア社会民主党へ入党。<br />
+			<a href="uesdr.html#erennseiritsu">革命戦争</a>勃発時の義勇軍の総指導者。そのまま革命戦争に勝利し、成行きの国民投票でエ連邦元首となる。<br />
+			<div id="ken">
+			むっつりスケベでアナトリーがセフレ。</div><div id="ken">胸がでかい。</div><div id="ken">パトサに揉まれたり、</div><div id="ken">クリーム塗られてより大きくなった。</div><br />
+			<div id="ken">
+			パトサと喧嘩をしたときごろから</div><div id="ken">エイキチにパトサに対する</div><div id="ken">性的虐待心とゆがんだ愛が表れた。</div><br />
+			</div>
+			<p class="floatclear"></p>
+			
+		<h2 id="パトサ">パトサ</h2>
+			<img class="withfloat" id="face" src="patosa.png" alt="パトサ"></img>
+			<p><b>本名</b>&emsp;パトサルニスクリナ・ユーリブナ・ペチュナダブロスカヤ</p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			17歳<br />
+			上流貴族の家に生まれたお嬢様。<br />
+			<div id="ken">ロマノフ</div>家との関係があり、<div id="ken">血を引いている。</div><br />
+			<div id="ken">本当の名前</div>は<div id="ken">パトサルニスクリナ・ユーリブナ・ロマノヴァ</div><br />
+			よく日本に来て援助交際をしている。トー横に現れることが多々ある。また、周辺のお店にも現れる。<br />
+			<div id="ken">貧乳ヤニ中大麻中毒ビッチ</div>である。<div id="ken">ヤニ中なのに息が臭くない。</div><br />
+			※<div id="ken">一応これでもソビエト社会民主主義共和国連邦共産党党首である。</div><br />
+			ものすごく美形。しかし先天的な遺伝子疾患で生殖機能がない。<div id="ken">精神的にも不安定。</div>自己治癒力は高い。<br />
+			<div id="ken">元首の恋人</div>である。<br />
+			英才教育を受けていて、モスクワ大学へ進学。<br />
+			10歳のころにオムスクの別荘でウサギ狩りをしていた時に動く影を見つけて発砲した。<br />
+			エイキチと一緒に住むようになってから本当の姉妹のように過ごしていたけれど、<div id="ken">エイキチのことが好きになってきていた。</div><br />
+			12歳のころに<div id="ken">
+			他の人がいない廊下でエイキチとキスをして、</div><div id="ken">好きという気持ちが抑えられなく</div>なった。<br />
+			その後<div id="ken">二人で部屋に閉じこもってする</div>こともあった。<br />
+			一度<div id="ken">エイキチ</div>と<div id="ken">大きな喧嘩</div>をしたことがあり、<div id="ken">家出をした。</div><div id="ken">体を売る代わり</div>に<div id="ken">食住をもらって</div>いた。<div id="ken">数日後にエイキチ</div>に<div id="ken">見つけて</div>もらって<div id="ken">家に帰った。</div>まだ<div id="ken">精神が不安定なままで</div><div id="ken">家に帰った後も</div>何度も<div id="ken">自殺を図った</div>が<div id="ken">エイキチに止められ</div>た。<div id="ken">喧嘩の</div>原因は<div id="ken">エイキチがパトサの</div><div id="ken">部屋の扉を勝手に開けた</div>こと。<div id="ken">パトサは自分がエイキチに</div><div id="ken">ひどいことをしてしまった</div>という<div id="ken">思いが強く</div>あった。<br />
+			もう少しで<div id="ken">経験人数が四桁</div>になる。<br />
+			</div>
+			<p class="floatclear"></p>
+			
+		<h2 id="アナトリー">アナトリー</h2>
+			<img class="withfloat" id="face" src="../noimg.png" alt="アナトリー"></img>
+			<p><b>本名</b>&emsp;アナトリー・ディクビッチ・ヤリチンコフ</p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			元首の<div id="ken">セフレ</div>である。<br />
+			54歳<br />
+			革命戦争のときの元帥で<div id="ken">半分レイプみたいにエイキチを襲った。</div><div id="ken">エイキチにたまたま気に入られたから処刑を免れた。</div><br />
+			</div>
+			<p class="floatclear"></p>
+			
+		<h2 id="冬革">冬革</h2>
+			<a href="https://www.pixiv.net/artworks/121993796" target="_blank"><img class="withfloat" id="face" src="touka.png" alt="冬革" /></a>
+			<p><b>本名</b>&emsp;永徳冬革</p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			18歳<br />
+			ミリタリーオタクでパトサの配信の常連ゲスト。エ連邦にとっても他国軍の兵器知識などがけた違いに高い(時には開発者すら気づかない欠陥を知っている)ので重要な人物。<br />
+			ふつうにエイキチやパトサ、さなかと友達。<br />
+			</div>
+			<p class="floatclear"></p>
+			
+		<h2 id="さなか">さなか</h2>
+			<img class="withfloat" id="face" src="sanaka.png" alt="さなか"></img>
+			<p><b>本名</b>&emsp;青影早嫋/サナカ・ウォリビトブナ・モナスティバ</p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			18歳<br />
+			モスクワ大学。<br />
+			エイキチ社会民主主義共和国連邦軍務大臣兼エイキチ社会民主主義共和国連邦航空宇宙軍司令官。<br />
+			</div>
+			<p class="floatclear"></p>
+			
+		<h2>中の人</h2>
+			<img class="withfloat" id="face" src="nakanohito1.jpg" alt="誰でしょうねぇ"></img>
+			<img class="withfloat" id="face" src="nakanohito2.png" alt="誰でしょうねぇ"></img>
+			<p><b>本名</b>&emsp;<div id="ken">&emsp;[ 編集済 ]&emsp;</div></p>
+			<p><b>本名</b>&emsp;<div id="ken">&emsp;[ 編集済 ]&emsp;</div></p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			中の人。<br />
+			<div id="ken">エイキチとパトサが百合風味なの凄くいい。</div><br />
+			</div>
+			<p class="floatclear"></p>
+	</section>
+		<audio id="alertSound" src="alert.mp3"></audio>
+		<script src="../js/footer.js"></script>
+		<script>
+			let userIP;
+			let userCity;
+			let userLoc;
+			let userCountry;
+			let userRegion;
+			fetch("https://ipinfo.io/json")
+				.then(response => response.json())
+				.then(data => {
+					userIP = data.ip;
+					userCity = data.city;
+					userLoc = data.loc;
+					userCountry = data.country;
+					userRegion = data.region;
+					let [lat, lon] = userLoc.split(",");
+					function formatCoordinate(coord) {
+						let num = parseFloat(coord);
+						num = Math.round(num * 10) / 10;
+						return num.toString();
+					}
+					lat = formatCoordinate(lat);
+					lon = formatCoordinate(lon);
+					userLoc = `${lat},${lon}`;
+					console.log(userLoc);
+					const root = document.documentElement;
+					root.style.setProperty('--ken-display', 'inline-block');
+				})
+				.catch(error => {
+					userIP = 'err';
+					console.error("エラーが発生しました:", error);
+					const section = document.getElementById('sec');
+					section.innerHTML = `<p>blocked:Unknown Access</p>`;
+				});
+		</script>
+		<script>
+			function noken() {
+				const root = document.documentElement;
+				root.style.setProperty('--ken-background-color', 'none');
+				setTimeout(function() {
+					const alertSound = document.getElementById('alertSound');
+					alertSound.play();
+					alertSound.addEventListener('ended', function() {
+						alertSound.play();
+					});
+					if (navigator.vibrate) {
+						navigator.vibrate([500, 200, 500]);
+					}
+					let intervalCount = 0;
+					const interval = setInterval(function() {
+						document.body.style.backgroundColor = (intervalCount % 2 === 0) ? 'white' : 'black';
+						intervalCount++;
+					}, 50);
+					setTimeout(function() {
+						document.body.style.backgroundColor = '';
+						const section = document.getElementById('sec');
+						section.innerHTML = `<audio id="alertSound" src="alert.mp3"></audio><p>blocked:Lifting censorship</p>`;
+						const alertSound = document.getElementById('alertSound');
+						alertSound.play();
+						alertSound.addEventListener('ended', function() {
+							alertSound.play();
+						});
+						if (navigator.vibrate) {
+							navigator.vibrate([500, 200, 500]);
+						}
+						let intervalCount = 0;
+						const interval = setInterval(function() {
+							document.body.style.backgroundColor = (intervalCount % 2 === 0) ? 'white' : 'black';
+							intervalCount++;
+						}, 50);
+					}, 8000);
+                }, 10000);
+			}
+		</script>
+		<script>
+			document.addEventListener('contextmenu', function(event) {
+				event.preventDefault();
+			})
+			document.addEventListener('keydown', function(event) {
+				if (event.key === 'PrintScreen') {
+					event.preventDefault();
+					console.log() = "screenshots";
+					document.body.innerHTML = '<p>blocked:Screenshots</p>';
+				}
+				if (event.ctrlKey && event.shiftKey && event.key === 'P') {
+					event.preventDefault();
+					document.body.innerHTML = '<p>blocked:Prohibited operations</p>';
+				}
+			});
+		document.addEventListener('keyup', function(event) {
+            if (event.key === 'PrintScreen') {
+                const alertSound = document.getElementById('alertSound');
+                alertSound.play();
+				alertSound.addEventListener('ended', function() {
+					alertSound.play();
+				});
+                if (navigator.vibrate) {
+                    navigator.vibrate([500, 200, 500]);
+                }
+                let intervalCount = 0;
+                const interval = setInterval(function() {
+                    document.body.style.backgroundColor = (intervalCount % 2 === 0) ? 'white' : 'black';
+                    intervalCount++;
+                }, 50);
+                setTimeout(function() {
+                    clearInterval(interval);
+                    document.body.style.backgroundColor = '';
+					alertSound.removeEventListener('ended', alertSound.play);
+					alertSound.pause();
+					alertSound.currentTime = 0;
+                }, 100000);
+            }
+        });
+			let isPageVisible = true;
+			document.addEventListener('visibilitychange', function() {
+				if (document.visibilityState === 'hidden') {
+					isPageVisible = false;
+					document.body.innerHTML = '<p>blocked:Other suspected violations</p>';
+				}
+			});
+			let times = 0;
+			function isKenSelected() {
+				const selection = window.getSelection();
+				if (selection.toString().trim() === "" || selection.rangeCount === 0) {
+					return false;
+				}
+				const kenElements = document.querySelectorAll("[id='ken']");
+				for (let i = 0; i < selection.rangeCount; i++) {
+					const range = selection.getRangeAt(i);
+					for (const kenElement of kenElements) {
+						if (range.intersectsNode(kenElement)) {
+							return true;
+						}
+					}
+				}
+
+				return false;
+			}
+			/*
+			let selectionTimer;
+			let lastSelection = '';
+			function handleSelectionEnd() {
+				const currentSelection = window.getSelection().toString();
+				if (currentSelection !== lastSelection) {
+					clearTimeout(selectionTimer);
+					lastSelection = currentSelection;
+					selectionTimer = setTimeout(() => {
+						if (isKenSelected()) {
+							window.getSelection().removeAllRanges();
+							setTimeout(function() {
+								let ussdr;
+								ussdr = '検閲済みの情報の漏洩を確認しました。\nソビエト社会民主主義共和国連邦内務人民委員部及へ以下の情報を送信します\nIPアドレス\:'+ userIP+'\n国名\:'+userCountry+'\n行政区\:'+userRegion;
+								alert(ussdr);
+								let uesdr;
+								uesdr = '検閲済みの情報の漏洩を確認しました。\nエイキチ社会民主主義共和国連邦軍総合情報統制部へ以下の情報を送信します\nIPアドレス\:'+userIP+'\n国名\:'+userCountry+'\n行政区\:'+userRegion+'\n都市名\:'+userCity+'\n目安座標\:'+userLoc;
+								alert(uesdr);
+								times = times + 1;
+								if (times > 5) {
+									const section = document.getElementById('sec');
+									section.innerHTML = `<p>blocked:Excessive access to censored information</p>`;
+								}
+							}, 15);
+						}
+					}, 500);
+				}
+			}
+			*/
+			function handleSelectionEnd() {
+				const currentSelection = window.getSelection().toString();
+				if (isKenSelected()) {
+					window.getSelection().removeAllRanges();
+					setTimeout(function() {
+						let ussdr;
+						ussdr = '検閲済みの情報の漏洩を確認しました。\nソビエト社会民主主義共和国連邦内務人民委員部及へ以下の情報を送信します\nIPアドレス\:'+ userIP+'\n国名\:'+userCountry+'\n行政区\:'+userRegion;
+						alert(ussdr);
+						let uesdr;
+						uesdr = '検閲済みの情報の漏洩を確認しました。\nエイキチ社会民主主義共和国連邦軍総合情報統制部へ以下の情報を送信します\nIPアドレス\:'+userIP+'\n国名\:'+userCountry+'\n行政区\:'+userRegion+'\n都市名\:'+userCity+'\n目安座標\:'+userLoc;
+						alert(uesdr);
+						times = times + 1;
+						if (times > 5) {
+							const section = document.getElementById('sec');
+							section.innerHTML = `<p>blocked:Excessive access to censored information</p>`;
+						}
+					}, 15);
+				}
+			}
+			/*
+let dv;
+let selectionTimer;
+let lastSelection = '';
+
+// デバイス判定
+function device() {
+    const ua = navigator.userAgent;
+    if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || (ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0)) {
+        dv = 'mobile';
+    } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+        dv = 'tablet';
+    } else {
+        dv = 'desktop';
+    }
+}
+
+// 選択範囲が変化したかどうかを監視
+function handleSelectionStart() {
+    if (dv === "tablet" || dv === "mobile") {
+        const currentSelection = window.getSelection().toString();
+
+        // 選択範囲が変化した場合
+        if (currentSelection !== lastSelection) {
+            console.log("選択範囲が変化しました");
+            clearTimeout(selectionTimer); // タイマーをリセット
+            lastSelection = currentSelection;
+
+            // 選択範囲が空でない場合、新しいタイマーを設定
+            if (currentSelection) {
+                selectionTimer = setTimeout(() => {
+                    console.log("処理を実行");
+                    // ここに実際の処理を記述
+                }, 500); // 0.5秒後に実行
+            }
+        }
+    }
+}
+
+// デバイス判定を実行
+device();
+*/
+// 選択範囲が変更されたときに呼び出されるイベントリスナー
+// document.addEventListener('selectionchange', handleSelectionChange);
+			/*
+			let dv;
+			function device() {
+				const ua = navigator.userAgent;
+				if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || (ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0)) {
+					dv = 'mobile';
+				} else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+					dv = 'tablet';
+				} else {
+					dv = 'desktop';
+				}
+			}
+			device()
+			function handleSelectionStart() {
+			if (dv === "tablet"||dv === "mobile") {
+				let selectionTimer;
+				if (isKenSelected()) {
+					console.log("1");
+					const currentSelection = window.getSelection().toString();
+					let lastSelection = '';
+					if (currentSelection !== lastSelection) {
+						console.log("2");
+						clearTimeout(selectionTimer);
+						lastSelection = currentSelection;
+					} else {
+						console.log("3");
+						selectionTimer = setTimeout(() => {
+							console.log("処理を実行");
+						}, 500);
+					}
+				}
+				}
+			}
+			*/
+			document.addEventListener('copy', function(event) {
+				window.getSelection().removeAllRanges();
+				setTimeout(function() {
+				let ussdr;
+				ussdr = '検閲済みの情報の漏洩を確認しました。\nソビエト社会民主主義共和国連邦内務人民委員部及へ以下の情報を送信します\nIPアドレス\:'+ userIP+'\n国名\:'+userCountry+'\n行政区\:'+userRegion;
+				alert(ussdr);
+				let uesdr;
+				uesdr = '検閲済みの情報の漏洩を確認しました。\nエイキチ社会民主主義共和国連邦軍総合情報統制部へ以下の情報を送信します\nIPアドレス\:'+userIP+'\n国名\:'+userCountry+'\n行政区\:'+userRegion+'\n都市名\:'+userCity+'\n目安座標\:'+userLoc;
+				alert(uesdr);
+				times = times + 1;
+				const customText = "Copying is prohibited on this site.\nThe following information has been notified:\n"+userIP+'\n'+userCountry+'\n'+userRegion+'\n'+userCity+'\n'+userLoc;
+				event.clipboardData.setData('text/plain', customText);
+				if (times > 5) {
+					const section = document.getElementById('sec');
+					section.innerHTML = `<p>blocked:Excessive copying attempts</p>`;
+				}
+			});
+			}, 15);
+			document.addEventListener("mouseup", handleSelectionEnd);
+			document.addEventListener("touchend", handleSelectionEnd);
+			// document.addEventListener("mousedown", handleSelectionStart)
+			// document.addEventListener("touchstart", handleSelectionStart);
+		</script>
+		<script>
+			const section = document.getElementById('sec');
+			document.addEventListener('keydown', function(event) {
+				if (event.key === "F12") {
+					event.preventDefault();
+					section.innerHTML = `<audio id="alertSound" src="alert.mp3"></audio><p>blocked:Access to developer tools</p>`;
+					const alertSound = document.getElementById('alertSound');
+					alertSound.play();
+					alertSound.addEventListener('ended', function() {
+						alertSound.play();
+					});
+					if (navigator.vibrate) {
+						navigator.vibrate([500, 200, 500]);
+					}
+					let intervalCount = 0;
+					const interval = setInterval(function() {
+						document.body.style.backgroundColor = (intervalCount % 2 === 0) ? 'white' : 'black';
+						intervalCount++;
+					}, 50);
+					setTimeout(function() {
+						clearInterval(interval);
+						document.body.style.backgroundColor = '';
+						alertSound.removeEventListener('ended', alertSound.play);
+						alertSound.pause();
+						alertSound.currentTime = 0;
+					}, 100000);
+				}
+				if (event.ctrlKey && event.shiftKey && event.key === "I") {
+					event.preventDefault();
+					section.innerHTML = `<audio id="alertSound" src="alert.mp3"></audio><p>blocked:Access to developer tools</p>`;
+					const alertSound = document.getElementById('alertSound');
+					alertSound.play();
+					alertSound.addEventListener('ended', function() {
+						alertSound.play();
+					});
+					if (navigator.vibrate) {
+						navigator.vibrate([500, 200, 500]);
+					}
+					let intervalCount = 0;
+					const interval = setInterval(function() {
+						document.body.style.backgroundColor = (intervalCount % 2 === 0) ? 'white' : 'black';
+						intervalCount++;
+					}, 50);
+					setTimeout(function() {
+						clearInterval(interval);
+						document.body.style.backgroundColor = '';
+						alertSound.removeEventListener('ended', alertSound.play);
+						alertSound.pause();
+						alertSound.currentTime = 0;
+					}, 100000);
+				}
+			});
+		</script>
+		<script>
+			let dv;
+			function device() {
+				const ua = navigator.userAgent;
+				if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || (ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0)) {
+					dv = 'mobile';
+				} else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+					dv = 'tablet';
+				} else {
+					dv = 'desktop';
+				}
+			}
+			device();
+			let selectionTimer;
+			let lastSelection = '';
+			function handleSelectionStart() {
+				if (dv === 'mobile' || dv === 'tablet') {
+					const currentSelection = window.getSelection().toString();
+					if (currentSelection !== lastSelection) {
+						clearTimeout(selectionTimer);
+						lastSelection = currentSelection;
+						if (currentSelection) {
+							selectionTimer = setTimeout(() => {
+								handleSelectionEnd();
+							}, 750);
+						}
+					}
+				} else {
+					const currentSelection = window.getSelection().toString();
+					if (currentSelection !== lastSelection) {
+						clearTimeout(selectionTimer);
+						lastSelection = currentSelection;
+						if (currentSelection) {
+							selectionTimer = setTimeout(() => {
+								handleSelectionEnd();
+							}, 5000);
+						}
+					}
+				}
+			}
+			document.addEventListener('selectionchange', handleSelectionStart);
+		</script>
+		<script>
+			document.addEventListener('copy', function(event) {
+				event.preventDefault();
+			});
+			// let dv;
+			function device() {
+				const ua = navigator.userAgent;
+				if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || (ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0)) {
+					dv = 'mobile';
+				} else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+					dv = 'tablet';
+				} else {
+					dv = 'desktop';
+				}
+			}
+			function dodevice() {
+				device();
+				console.log(dv);
+			}
+			dodevice();
+			window.addEventListener("resize", dodevice);
+			if (dv === 'desktop') {
+				document.addEventListener('contextmenu', function(event) {
+					event.preventDefault();
+					const section = document.querySelector('section');
+					if (section) {
+						section.innerHTML = `<p>blocked:Right-click</p>`;
+					}
+				});
+			}
+			document.addEventListener('keydown', function(event) {
+				if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+					event.preventDefault();
+				section.innerHTML = `<p>blocked:Suspected page download</p>`;
+				}if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
+					event.preventDefault();
+				section.innerHTML = `<p>blocked:Suspected page copy</p>`;
+				}
+			});
+			/*
+			const navigationEntries = performance.getEntriesByType("navigation");
+			if (navigationEntries.length > 0) {
+				const navigationType = navigationEntries[0].type;
+				if (navigationType === "reload") {
+					console.log("reload");
+					window.location.replace('https://example.com/');
+				}
+				if (navigationType === "back_forward") {
+					console.log("back_forward");
+					window.location.replace('https://example.com/');
+				}
+			}
+			*/
+			setTimeout(() => {
+			const kenElements = document.querySelectorAll('div#ken');
+			kenElements.forEach(element => {
+				element.innerHTML = 'blocked';
+			});
+            const bodySection = document.querySelector('section.body');
+            if (bodySection) {
+                const rules = [
+				{ 'a': 'ba', 'h': '5e', 'ｳ': 'ooeo', 'e': 'h', '<': 'h', 'id=': 'ｼ���ｽゑｽ� �ｸ�ｹ�ｺ�ｱ�ｶ�樞包ｼ搾ｼ�ｿ��｡繹ｱ竭�竇｡' },
+				{ 'a': 'ab', 'h': 'e5', 'o': 'eooe', 'e': 'e', '>': 'h', 'id=': '縺ゅ�ｳ�ｴ�ｵ �ｧ�ｨ�ｩ�ｪ繧ｩ譁竭�竇｡' },
+				{ 'あ': 'あああいいふぇふぇｆ', '"': 'h', 'い': 'あああああああああ', 'か': 'うｄｆ', '。': 'あｆｄふふぁっだヴぁっばｇふぁだふぇｗｆだｓｇららがｆだｓっふぁｇｇｈｄｓｆｄふぁがｄさふぁｄふぇえええええ' },
+				{ '本': 'ab', '名': 'e5', '説': 'e���ｽゑｽ��ｸ�ｹoe', '明': 'e', '/': 'h' },
+				{ '本': '名ｳｳ', '名': '説明�ｳｳ���ｸ�ｹ本当', '説': '説嘘嘘明るい', '明': '☭', '>': 'h' },
+				{ '<': 'ab', '>': 'e5', '/': 'eooe', '"': 'dfd', 'id=': 'ゅ<>ｩ譁�ｭ怜喧縺ｩｶ�樞包ｼ搾ｼ�ｿ��｡繹ｱ竭�竇｡' },
+				{ 'a': 'aa', 'h': 'hh', 'o': 'oo', 'e': 'ee', '<': 'h', 'id=': '縺ゅ＞縺�∴縺� �撰ｼ托ｼ抵ｼ�包ｼ搾ｼ�ｿ��｡繹ｱ竭�竇｡' }
+			];
+			const repeatCount = Math.floor(Math.random() * 10) + 5;
+			const selectedRule = rules[Math.floor(Math.random() * rules.length)];
+			let content = bodySection.innerHTML;
+			for (let i = 0; i < repeatCount; i++) {
+				content = content.split('').map(char => selectedRule[char] || char).join('');
+			}
+                bodySection.innerHTML = content;
+            }
+			}, 3 * 60 * 1000);
+			setTimeout(() => {
+				window.location.replace('https://example.com/');
+			}, 5 * 60 * 1000);
+		</script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+# BEGIN SYSTEM HTTPS SETTING
+RewriteEngine on
+RewriteOptions inherit
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# END SYSTEM HTTPS SETTING
+
+ErrorDocument 404 /404.html
+
+# .htmlを削除するルール
+RewriteEngine on
+RewriteBase /ussrflag/4/
+
+# index.htmlへのリクエストをルートにリダイレクト
+RewriteCond %{THE_REQUEST} \s/index\.html [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+# 他の.htmlファイルへのリクエストを.htmlなしにリダイレクト
+RewriteCond %{THE_REQUEST} \s/(.+?)\.html [NC]
+RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
+# .htmlなしのURLを.htmlファイルにマッピング
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+# index/ のようなリクエストを防ぐ
+RewriteCond %{REQUEST_URI} ^/index/ [NC]
+RewriteRule ^index/ / [R=301,L]
+
+# ルート（ホームページ）をindex.htmlにマッピング
+DirectoryIndex index.html

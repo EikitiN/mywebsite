@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+		<link rel="icon" href="../favicon.png"> 
+		<link rel="shortcut icon" href="../favicon.png">
+		<link rel="apple-touch-icon" href="../favicon.png"> 
+		<script>
+			function updateStylesheet() {
+				const width = window.innerWidth;
+				const height = window.innerHeight;
+				let cssFile;
+				if (width < 750) {
+					cssFile = "../mobile.css";
+				} else if (height > width) {
+					cssFile = "../tablet.css";
+				} else {
+					cssFile = "../pc.css";
+				}
+				let existingLink = document.getElementById("dynamic-css");
+				if (existingLink) {
+					existingLink.remove();
+				}
+				let link = document.createElement("link");
+				link.id = "dynamic-css";
+				link.rel = "stylesheet";
+				link.href = cssFile;
+				link.type = "text/css";
+				document.head.appendChild(link);
+			}
+			window.addEventListener("resize", updateStylesheet);
+			window.addEventListener("load", updateStylesheet);
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="../js/headerTEST.js"></script>
+		<script>
+		function func1(e) {
+			e.classList.toggle("active");
+		}
+		</script>
+		<style>
+			<!-- スタイルを入力 -->
+			h3 {
+				color: red;
+			}
+			.aaaaa {
+				font-size: 200px;
+			}
+			 table {
+				border: 2px solid red;
+			}
+			th, td {
+				border: 2px solid red;
+				padding: 8px;
+			}
+			th {
+				background-color: yellow;
+			}
+			article {
+				margin: 10px;
+			}
+			section {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.parent ul {display: none;}
+			.active ul {display: block;}
+			.icon-link {
+				position: absolute;
+				top: 7.5px;
+				left: 25px;
+				width: 30px;
+				height: 45px;
+				z-index: 2; /* アイコンを手前に表示 */
+			}
+			.icon-link img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain; /* 画像を収める */
+			}
+			#ken{background-color: black;}
+		</style>
+        <title>ああああああああ</title>
+    </head>
+    <body>
+		<header id="header" data-header-text="あああああああああああ"></header>
+	<section class="body">
+		<!-- 内容を記述 -->
+		<h2>ああああああああああ</h2>
+		<p class="parent" onclick="func1(this)">ぁぁぁ<div>あああ</div>ぁぁぁ</p>
+		<section class="pagelink">
+		<p id="font-ML">あああ</p>
+		<ul class="withfloat2" style="padding: 0;">
+			<li class="withfloat2" onclick="func1(this)">あ<a class="jump" href="#junnp1">▼</a>
+				<ul>
+					<li>[ああ]</li>
+					<li>あ<a class="jump" href="#junnp1">▼</a></li>
+					<li>ああ<a class="jump" href="#junnp1">▼</a></li>
+					<li>あああ<a class="jump" href="#junnp1">▼</a></li>
+					<li>ああああ<a class="jump" href="#junnp1">▼</a></li>
+				</ul>
+			</li>
+			<li class="withfloat2" onclick="func1(this)">ああ<a class="jump" href="#junnp1">▼</a>
+				<ul>
+					<li>あ<a class="jump" href="#junnp1">▼</a></li>
+					<li>ああ<a class="jump" href="#junnp1">▼</a></li>
+				</ul>
+			</li>
+		</ul>
+		<p class="floatclear"></p>
+		</section>
+		<p class="floatclear" />
+		<p class="floatclear"></p>
+		<p class="floatclear"></p>
+		<p class="floatclear"></p>
+		<p class="floatclear2"></p>
+		<div>ああああああああああああああああああああああああ</div><br />
+		<div id="ken">ああああああああああああああああああああああああ</div><br />
+		<p>あああああああ
+		<span id="ken">あああああああ</span>
+		ああああああああああ</p><br />
+		<p class="floatclear" />
+			<h3>あぁあぁあぁあ</h3>
+				<section class="withfloat" style="flex-wrap: wrap;">
+				<article>
+					<a href="#junnp1"><div class="indexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h3>あああああああああああああ</h3>
+					</div></div></a>
+				</article>
+				<article>
+					<a href="#junnp1"><div class="indexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h3>ああああああ</h3><p style="font-size: 90%;">あああああああああ</p>
+					</div></div></a>
+				</article>
+				</section>
+				<p class="floatclear" />
+				<section class="withfloat" style="flex-wrap: wrap;">
+				<article>
+					<a href="#junnp1"><div class="miniindexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h4>あああああああああああああ</h4>
+					</div></div></a>
+				</article>
+				<article>
+					<a href="#junnp1"><div class="miniindexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h4>あああああああああああああ</h4>
+					</div></div></a>
+				</article>
+				<article>
+					<a href="#junnp1"><div class="miniindexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h4>あああああああああああああ</h4>
+					</div></div></a>
+				</article>
+				<article>
+					<a href="#junnp1"><div class="miniindexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h4>あああああああああああああ</h4>
+					</div></div></a>
+				</article>
+				<article>
+					<a href="#junnp1"><div class="miniindexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h4>あああああああああああああ</h4>
+					</div></div></a>
+				</article>
+				<article>
+					<a href="#junnp1"><div class="miniindexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h4>あああああああああああああ</h4>
+					</div></div></a>
+				</article>
+				<article>
+					<a href="#junnp1"><div class="miniindexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h4>あああああああああああああ</h4>
+					</div></div></a>
+				</article>
+				<article>
+					<a href="#junnp1"><div class="miniindexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h4>あああああああああああああ</h4>
+					</div></div></a>
+				</article>
+				<article>
+					<a href="#junnp1"><div class="miniindexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h4>あああああああああああああ</h4>
+					</div></div></a>
+				</article>
+				<article>
+					<a href="#junnp1"><div class="miniindexbox" style="background-image: url('test.png');">
+					<div class="indexbox2"><h4>あああああああああああああ</h4>
+					</div></div></a>
+				</article>
+				</section>
+				<p class="floatclear" />
+		<p class="fortest">ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
+		<section class="withfloat" style="flex-wrap: wrap;">
+			<article>
+				<a href="#junnp1"><div  class="indexbox" style="background-image: url('test.png');"><div class="indexbox2"><h3>あああああ</h3></div>
+				</div></a>
+			</article>
+			<article>
+				<a href="#junnp1"><div  class="indexbox" style="background-image: url('test.png');"><div class="indexbox2"><h3>あああああ</h3></div>
+				</div></a>
+			</article>
+			<article>
+				<a href="#junnp1"><div  class="indexbox" style="background-image: url('test.png');"><div class="indexbox2"><h3>あああああ</h3></div>
+				</div></a>
+			</article>
+			<article>
+				<a href="#junnp1"><div  class="indexbox" style="background-image: url('test.png');"><div class="indexbox2"><h3>あああああ</h3></div>
+				</div></a>
+			</article>
+			<article>
+				<a href="#junnp1"><div  class="indexbox" style="background-image: url('test.png');"><div class="indexbox2"><h3>あああああ</h3></div>
+				</div></a>
+			</article>
+			<article>
+				<a href="#junnp1"><div  class="indexbox" style="background-image: url('test.png');"><div class="indexbox2"><h3>あああああ</h3></div>
+				</div></a>
+			</article>
+		</section>
+		<p class="floatclear" />
+		<article>
+			<img src="test.png" id="S" class="withfloat"/>
+			<p class="floatspace" style="overflow: hidden;">ああ<br>あああ<br>ああああああああ
+			<br>ああああ
+			<br>あ
+			<br>ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
+			<p class="floatclear" />
+			<h3>ああああああああああああああああああああ</h3>
+			<a class="aaaaa" href="https://ansaikuropedia.org/wiki/%E3%81%82%E3%81%82%E3%81%82%E3%81%82%E3%81%82%E3%81%82%E3%81%82%E3%81%82%E3%81%82!">あ。</a>
+			<br>
+			<img id="XL" src="https://s.kuku.lu/image.php/3kc2m02gl"><br />
+			<img src="test.png"><br />
+			<img id="junnp1" src="test.png" id="ML"><br />
+			<article>
+			あああああ
+			<img src="test.png" id="ML" style="display: block;"><br />
+			</article>
+			<ul>
+				<li class="parent" onclick="func1(this)">あ
+					<ul>
+						<li>あああああ</li>
+					</ul>
+				</li>
+				<li class="parent" onclick="func1(this)">ああ
+					<ul>
+						<li class="parent" onclick="func1(this)">ああああああ
+							<ul>
+								<li>ああああああああああああああ</li>
+							</ul>
+						</li>
+						<li class="parent" onclick="func1(this)">あああああああ
+							<ul>
+								<li>あああああああああああああああ</li>
+								<li>ああああああああああああああああ</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="parent" onclick="func1(this)">あああ
+					<ul>
+						<li>ああああああああ</li>
+						<li>あああああああああ</li>
+						<li>あああああああああ</li>
+					</ul>
+				</li>
+			</ul>
+			<table class="withfloat">
+				<thead>
+					<tr>
+						<th>ああ</th>
+						<th>あああああ</th>
+						<th>あああ</th>
+						<th>ああああああああ</th>
+						<th>あ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>あああああ</td>
+						<td>あああああああ</td>
+						<td>ああああ</td>
+						<td>あああああああ</td>
+						<td>ああああああああ</td>
+					</tr>
+					<tr>
+						<td>あああ</td>
+						<td>ああああ</td>
+						<td>ああ</td>
+						<td>あああ</td>
+						<td>ああああ</td>
+					</tr>
+					<tr>
+						<td>ああああああ</td>
+						<td>ああああ</td>
+						<td>ああああ</td>
+						<td>あああああ</td>
+						<td>あああ</td>
+					</tr>
+					<tr>
+						<td>ああ</td>
+						<td>ああああああ</td>
+						<td>ああ</td>
+						<td>ああああ</td>
+						<td>あああ</td>
+					</tr>
+					<tr>
+						<td>あああああ</td>
+						<td>ああ</td>
+						<td>あああああ</td>
+						<td>ああああ</td>
+						<td>あああああ</td>
+					</tr>
+					<tr>
+						<td>あああ</td>
+						<td>ああああ</td>
+						<td>ああ</td>
+						<td>あああああ</td>
+						<td>ああ</td>
+					</tr>
+					<tr>
+						<td>あああ</td>
+						<td>あああああ</td>
+						<td>あああ</td>
+						<td>ああ</td>
+						<td>ああああああ</td>
+					</tr>
+					<tr>
+						<td>あああ</td>
+						<td>ああああ</td>
+						<td>ああ</td>
+						<td>ああああ</td>
+						<td>あああ</td>
+					</tr>
+					<tr>
+						<td>あああ</td>
+						<td>ああああああ</td>
+						<td>ああああ</td>
+						<td>あああ</td>
+						<td>ああ</td>
+					</tr>
+					<tr>
+						<td>あああ</td>
+						<td>ああああ</td>
+						<td>ああああ</td>
+						<td>ああ</td>
+						<td>ああ</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>ああああああ</p>
+			<p class="floatclear"></p>
+		</article>
+		<section>
+		<article>
+		あ
+		<img src="test.png" style="display: block;" id="M"/>
+		</article>
+		<article>
+		ああ
+		<img src="test.png" style="display: block;"  id="M"/>
+		</article>
+		<article>
+		あああ
+		<img src="test.png" style="display: block;"  id="M"/>
+		</article>
+		</section>
+	</section>
+		<script>
+		// 選択範囲に#kenが含まれているか確認する関数
+function isKenSelected() {
+    const selection = window.getSelection();
+
+    // 選択範囲が空の場合
+    if (selection.toString().trim() === "" || selection.rangeCount === 0) {
+        return false;
+    }
+
+    // 選択範囲内のすべてのRangeをチェック
+    for (let i = 0; i < selection.rangeCount; i++) {
+        const range = selection.getRangeAt(i);
+        const kenElement = document.getElementById("ken");
+
+        // Rangeが#kenを含むかどうかを確認
+        if (range.intersectsNode(kenElement)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// 選択が終了した後に実行する関数
+function handleSelectionEnd() {
+    if (isKenSelected()) {
+        alert("文字列が選択されました！");
+    }
+}
+
+// mouseupとtouchendイベントを監視
+document.addEventListener("mouseup", handleSelectionEnd);
+document.addEventListener("touchend", handleSelectionEnd);
+		</script>
+		<script src="../js/footer.js"></script>
+    </body>
+</html>

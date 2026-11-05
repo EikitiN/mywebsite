@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+		<link rel="icon" href="../favicon.png"> 
+		<link rel="shortcut icon" href="../favicon.png">
+		<link rel="apple-touch-icon" href="../favicon.png"> 
+		<script>
+			function updateStylesheet() {
+				const width = window.innerWidth;
+				const height = window.innerHeight;
+				let cssFile;
+				if (width < 750) {
+					cssFile = "../mobile.css";
+				} else if (height > width) {
+					cssFile = "../tablet.css";
+				} else {
+					cssFile = "../pc.css";
+				}
+				let existingLink = document.getElementById("dynamic-css");
+				if (existingLink) {
+					existingLink.remove();
+				}
+				let link = document.createElement("link");
+				link.id = "dynamic-css";
+				link.rel = "stylesheet";
+				link.href = cssFile;
+				link.type = "text/css";
+				document.head.appendChild(link);
+			}
+			window.addEventListener("resize", updateStylesheet);
+			window.addEventListener("load", updateStylesheet);
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="エ連邦について"/>
+		<head prefix="og: https://ogp.me/ns#">
+		<meta property="og:title" content="エ連邦について｜UESDR-エ連邦"/>
+		<meta property="og:url" content="https://eikitin.github.io/mywebsite/uesdr/uesdr/uesdr.html"/>
+		<meta property="og:image" content="https://eikitin.github.io/mywebsite/uesdr/index/top-1.png"/>
+		<meta name="keywords" content="エ連,エ連邦,エイキチ社会民主主義共和国連邦" />
+		<meta name="author" content="エイキチ(エ連邦)" />
+		<script src="../js/header.js"></script>
+        <title>エ連邦について</title>
+    </head>
+    <body>
+		<header id="header" data-header-text="エ連邦について"></header>
+	<section class="body">
+		<article>
+		<p>注&emsp;地図は旧式を使用しています…</p>
+		<p>&emsp;&emsp;地図の更新はお待ちください…</p>
+		<p>歴史の部分は制作中です</p>
+		<h2>エイキチ社会民主主義共和国連邦及びソビエト社会民主主義共和国連邦について</h2>
+		<p>ソビエト社会民主主義共和国連邦は3つの共和国連邦からなる連邦である。</p>
+		<h3>構成</h3>
+			<ul class="withfloat">
+				<li id="font-L">ソビエト社会民主主義共和国連邦
+					<ul>
+						<li id="font-M">エイキチ社会民主主義共和国連邦
+							<ul>
+								<li id="font-SM">日本国</li>
+								<li id="font-SM">中華人民共和国</li>
+								<li id="font-SM">大韓民国</li>
+								<li id="font-SM">モンゴル国</li>
+								<li id="font-SM">中華民国</li>
+								<li id="font-SM">朝鮮民主主義人民共和国</li>
+								<li id="font-SM">アラスカ共和国</li>
+							</ul>
+						</li>
+						<li id="font-M">ソビエト社会主義共和国連邦
+							<ul>
+								<li id="font-SM">ロシア連邦</li>
+								<li id="font-SM">ウクライナ</li>
+								<li id="font-SM">ベラルーシ共和国</li>
+								<li id="font-SM">モルドバ共和国</li>
+								<li id="font-SM">ジョージア</li>
+								<li id="font-SM">アルメニア共和国</li>
+								<li id="font-SM">アゼルバイジャン共和国</li>
+								<li id="font-SM">カザフスタン共和国</li>
+								<li id="font-SM">ウズベキスタン共和国</li>
+								<li id="font-SM">トルクメニスタン</li>
+								<li id="font-SM">キルギス共和国</li>
+								<li id="font-SM">タジキスタン共和国</li>
+							</ul>
+						</li>
+						<li id="font-M">ザーパト社会主義共和国連邦
+							<ul>
+								<li id="font-SM">エストニア共和国</li>
+								<li id="font-SM">ラトビア共和国</li>
+								<li id="font-SM">リトアニア共和国</li>
+								<li id="font-SM">グリーンランド共和国</li>
+								<li id="font-SM">アイルランド共和国</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<img src="https://s.kuku.lu/image.php/3bmeo6a1f" class="floatspace" id="ML" />
+			<p id="font-S">赤:ソビエト社会主義共和国連邦&emsp;緑:エイキチ社会民主主義共和国連邦&emsp;青:ザーパト社会主義共和国連邦</P>
+			<img src="https://s.kuku.lu/image.php/4em35nk0h" class="floatspace" id="ML" />
+			<p class="floatclear" />
+		<h2>歴史</h2>
+		<h3 id="erennseiritsu">成立・安定まで</h3>
+			<h4>2024年3月</h4>
+			<p id="margin-left1">&emsp;内容</p>
+			<p id="margin-left1">内容</p>
+		</article>
+	</section>
+		<script src="../js/footer.js"></script>
+    </body>
+</html>

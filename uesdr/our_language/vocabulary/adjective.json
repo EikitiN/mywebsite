@@ -1,0 +1,34 @@
+[
+{
+	"Vocabulary" : "1arat",
+	"Mean" : ["大きい"]
+},
+{
+	"Vocabulary" : "farat",
+	"Mean" : ["小さい"]
+},
+{
+	"Vocabulary" : "nielot",
+	"Mean" : ["黒い"]
+},
+{
+	"Vocabulary" : "zlot",
+	"Mean" : ["白い"]
+},
+{
+	"Vocabulary" : "voflot",
+	"Mean" : ["赤い"]
+},
+{
+	"Vocabulary" : "zalt",
+	"Mean" : ["新しい"]
+},
+{
+	"Vocabulary" : "neft",
+	"Mean" : ["古い"]
+},
+{
+	"Vocabulary" : "meflot",
+	"Mean" : ["青い"]
+}
+]

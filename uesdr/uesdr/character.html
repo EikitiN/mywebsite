@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+		<link rel="icon" href="../favicon.png"> 
+		<link rel="shortcut icon" href="../favicon.png">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<link rel="apple-touch-icon" href="../favicon.png"> 
+		<link rel="stylesheet" href="../mobile.css" type="text/css" media="screen and (max-width: 749px)">
+		<link rel="stylesheet" href="../pc.css" type="text/css" media="screen and (min-width: 750px)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="作品に出てくるキャラクターの紹介"/>
+		<head prefix="og: https://ogp.me/ns#">
+		<meta property="og:title" content="キャラクター紹介｜UESDR-エ連邦"/>
+		<meta property="og:url" content="https://eikitin.github.io/mywebsite/uesdr/uesdr/character.html"/>
+		<meta property="og:image" content="https://eikitin.github.io/mywebsite/uesdr/index/top-1.png"/>
+		<meta name="keywords" content="エ連邦,エイキチ社会民主主義共和国連邦,エイキチ,パトサ,キャラクター" />
+		<meta name="author" content="エイキチ(エ連邦)" />
+		<script src="../js/header.js"></script>
+		<script>
+			function updateStylesheet() {
+				const width = window.innerWidth;
+				const height = window.innerHeight;
+				let cssFile;
+				if (width < 750) {
+					cssFile = "../mobile.css";
+				} else if (height > width) {
+					cssFile = "../tablet.css";
+				} else {
+					cssFile = "../pc.css";
+				}
+				let existingLink = document.getElementById("dynamic-css");
+				if (existingLink) {
+					existingLink.remove();
+				}
+				let link = document.createElement("link");
+				link.id = "dynamic-css";
+				link.rel = "stylesheet";
+				link.href = cssFile;
+				link.type = "text/css";
+				document.head.appendChild(link);
+			}
+			window.addEventListener("resize", updateStylesheet);
+			window.addEventListener("load", updateStylesheet);
+		</script>
+		<style>
+			:root {
+				--ken-display: none;
+			}
+			:root {
+				--ken-background-color: black;
+			}
+			#ken{color: black; background-color: var(--ken-background-color); display: var(--ken-display);}
+			#ken::selection{color: white; background-color: #3360BE;}
+			img{margin-right: 20px;}
+			@media print {
+				body {
+					display: none;
+				}
+			}
+			.blink-white {
+				background-color: white;
+			}
+			.blink-black {
+				background-color: black;
+			}
+			section.illustrator{
+				background-color: rgb(211,239,245);
+				border: dashed 2px rgb(0,128,255);
+				border-radius: 8px;
+			}
+			p.icon{text-align: center;}
+			@media screen and (min-width:750px) {
+				div.icon{
+					display: inline-block;
+					padding: 10px;
+				}
+				img.icon{width: 18vw;}
+				div.illustrator{
+					display: inline-block;
+					margin-right:20px;
+					padding: 10px;
+					width: calc(75vw - 75px);
+				}
+				span#click{display: inline;}
+				span#tap{display: none;}
+			}
+			@media screen and (max-width:749px) {
+				div.icon{
+					padding: auto;
+					margin: 10px 0;
+					text-align: center;
+				}
+				img.icon{
+					height: 30vw;
+					margin: 30px;
+				}
+				span#click{display: none;}
+				span#tap{display: inline;}
+			}
+		</style>
+        <title>キャラクター紹介</title>
+    </head>
+    <body id="sec">
+		<header id="header" data-header-text="キャラクター紹介"></header>
+	<section class="body">
+		<section class="illustrator">
+			<div class="icon">
+				<a href="https://www.pixiv.net/users/91380317"><div style="text-align: center;"><img class="icon" src="icon.png" /></div></a>
+				<p class="icon">さなか子。</p>
+			</div>
+			<div class="illustrator">
+				<b>現在の活動名:</b>&emsp;<a href="https://www.pixiv.net/users/91380317">さなか</a><br />
+				このページのイラストを描いてくださっている<div id="ken"><div class="fromJSON" id="1-1">神</div></div>絵師さんです。<br />
+				<a href="#中の人">この人</a>のことです。<br />
+				<span style="font-size: 500%;">社会民主主義者絵師</span><br />
+				アイコンかリンクを<span id="tap">タップ</span><span id="click">クリック</span>して投稿されている絵を確認して、フォローしましょう!
+			</div>
+		</section>
+		<h1>重大な警告</h1>
+		<section style="color: red;">
+			<p color="red"><b>このページではスクリーンショットを禁止しています。スクリーンショットを行うと重大な被害が発生する場合があります。公共の場では絶対にしないでください。音害注意</b></p>
+			<p color="red"><b>このページではデベロッパーツールを禁止しています。開発者ツールの展開を行うと重大な被害が発生する場合があります。公共の場では絶対にしないでください。音害注意</b></p>
+			<p color="red"><b>このページでは、コピー、共有も禁止しています。</b></p>
+		</section>
+		<p>翻訳を使用すると、固有名詞は異なる言葉になることがあります。正しい名前はそれぞれのタイトル部分を確認してください。</p>
+		<section class="pagelink">
+			<p id="font-ML">ページ内リンク</p>
+			<a href="#エイキチ"><span class="no-translate">エイキチ Eikiti</span></a><br />
+			<a href="#パトサ"><span class="no-translate">パトサ Podso</span></a><br />
+			<a href="#アナトリー"><span class="no-translate">アナトリー Anatoly</span></a><br />
+			<a href="#冬革"><span class="no-translate">冬革 Touka</span></a><br />
+			<a href="#さなか"><span class="no-translate">さなか Sanaka</span></a><br />
+			<a href="#パトサの母"><span class="no-translate">パトサの母 Podso's mom</span></a><br />
+		</section>
+		<p style="margin-left: 20px;">イラストは<a href="https://www.pixiv.net/users/91380317">核ガンジー激推し各願寺僧侶だお</a>の作品です。</p>
+		<p style="margin-left: 20px;"><b>警告</b>&emsp;この文書は一部検閲されています。検閲済みの情報への不正アクセスはソビエト社会民主主義共和国連邦内務人民委員部及びエイキチ社会民主主義共和国連邦軍総合情報統制部への通達がなされます。</p>
+		<button onclick="noken()">検閲を解除する</button><b style="color: red;">検閲を解除すると重大な被害が発生する場合があります。公共の場では絶対にしないでください。音害注意</b>
+		<h2 id="エイキチ"><span class="no-translate">エイキチ/Eikiti</span></h2>
+			<img class="withfloat" id="face" src="eikichi.jpeg" alt="エイキチ"></img>
+			<p><b>本名―日本語</b>&emsp;<span class="no-translate">エイキチ・エイキチエブナ・サチカムニスカヤ</span></p>
+			<p><b>本名―英語</b>&emsp;<span class="no-translate">Eikiti Eikitevna Sochikomniskaya</span></p>
+			<p><b>本名―ロシア語</b>&emsp;<span class="no-translate">Эйкити Эйкитевна Социкомниская</span></p>
+			<p><b>本名―タタール語</b>&emsp;<span class="no-translate">Эйкити Эйкитевна Социкомниская/Eykiti Eykitevna Soçikomniskaya</span></p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			19歳<br />
+			エイキチ社会民主主義共和国連邦の国家元首、大統領である。<br />
+			ノヴォシビルスク州タタルスキー地区出身。タタール人。<br />
+			水商売の母から生まれた。<br />
+			子供のころから物事の習得・上達が得意で畑仕事の手伝いをしていた。<br />
+			<div id="ken"><div class="fromJSON" id="1">aho</div></div><div id="ken"><div class="fromJSON" id="2">aho</div></div><span class="no-translate"><div id="ken"><div class="fromJSON" id="3">aho</div></div><div id="ken"><div class="fromJSON" id="4">aho</div></div><div id="ken"><div class="fromJSON" id="5">aho</div></div><div id="ken"><div class="fromJSON" id="6">aho</div></div><div id="ken"><div class="fromJSON" id="7">aho</div></div><div id="ken"><div class="fromJSON" id="8">aho</div></div></span><br />
+			父との記憶は全くなく、母との記憶しかない。<br />
+			12歳のころ、男性二人に<div id="ken"><div class="fromJSON" id="9">aho</div></div>されオムスクへ連れていかれる。<br />
+			<div id="ken"><div class="fromJSON" id="10">aho</div></div>の最中にパトサの別荘敷地内へ入り込み、男性二人は<div id="ken"><div class="fromJSON" id="11">aho</div></div>される。<br />
+			<p style="margin-left: 10px; font-size: 80%;">パトサは、「敷地内で動いてるものは獲物だから撃っちゃっていい!お母様もそういってたもん」</p>
+			パトサに保護され、パトサの家で暮らすようになる。勉強も得意ですぐにロシア語も習得。(昔はタタール語しか喋れなかった)<br />
+			北京大学へ進学。主席。同時にロシア社会民主党へ入党。<br />
+			<a href="uesdr.html#erennseiritsu">革命戦争</a>勃発時の義勇軍の総指導者。そのまま革命戦争に勝利し、成行きの国民投票でエ連邦元首となる。<br />
+			<div id="ken">
+			<div class="fromJSON" id="12">aho</div></div><div id="ken"><div class="fromJSON" id="13">aho</div></div><div id="ken"><div class="fromJSON" id="14">aho</div></div><div id="ken"><div class="fromJSON" id="15">aho</div></div><br />
+			<div id="ken">
+			<div class="fromJSON" id="16">aho</div></div><div id="ken"><div class="fromJSON" id="17">aho</div></div><div id="ken"><div class="fromJSON" id="18">aho</div></div><br />
+			</div>
+			パトサの口にマカロフを突っ込んだことがある</div>
+			<p class="floatclear"></p>
+			
+		<h2 id="パトサ"><span class="no-translate">パトサ/Podso</span></h2>
+			<img class="withfloat" id="face" src="patosa.png" alt="パトサ"></img>
+			<p><b>本名―日本語</b>&emsp;<span class="no-translate">パトサルニスクリナ・ユーリブナ・ペチュナダブロスカヤ</span></p>
+			<p><b>本名―英語</b>&emsp;<span class="no-translate">Podsolniskrena Yuryevna Vechndobroskaia</span></p>
+			<p><b>本名―ロシア語</b>&emsp;<span class="no-translate">Подсолнискрена Юрьевна Вечндоброская</span></p>
+			<p><b>本名―ウクライナ語</b>&emsp;<span class="no-translate">Подсолнісцрена Юріївна Вечндоброська</span></p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			17歳<br />
+			上流貴族の家に生まれたお嬢様。<br />
+			<div id="ken"><div class="fromJSON" id="19">aho</div></div>家との関係があり、<div id="ken"><div class="fromJSON" id="20">aho</div></div><br />
+			<div id="ken"><div class="fromJSON" id="21">aho</div></div>は<div id="ken"><span class="no-translate"><div class="fromJSON" id="22">aho</div></div><div id="ken"><div class="fromJSON" id="23">aho</div></div><div id="ken"><div class="fromJSON" id="24">aho</div></div><div id="ken"><div class="fromJSON" id="25">aho</div></span></div><br />
+			よく日本に来て援助交際をしている。トー横に現れることが多々ある。また、周辺のお店にも現れる。<br />
+			<div id="ken"><div class="fromJSON" id="26">aho</div></div>である。<div id="ken"><div class="fromJSON" id="27">aho</div></div><br />
+			※<div id="ken"><div class="fromJSON" id="28">aho</div></div><br />
+			ものすごく美形。しかし先天的な遺伝子疾患で生殖機能がない。<div id="ken"><div class="fromJSON" id="29">aho</div></div>自己治癒力は高い。<br />
+			<div id="ken"><div class="fromJSON" id="30">aho</div></div>である。<br />
+			英才教育を受けていて、モスクワ大学へ進学。<br />
+			10歳のころにオムスクの別荘でウサギ狩りをしていた時に動く影を見つけて発砲した。<br />
+			英語もしゃべれるけど、<a href="podlish.html">なんか変</a><br />
+			エイキチと一緒に住むようになってから本当の姉妹のように過ごしていたけれど、
+			<div id="ken"><div class="fromJSON" id="31">aho</div></div><br />
+			12歳のころに<div id="ken"><div class="fromJSON" id="32">aho</div></div>
+			<div id="ken"><div class="fromJSON" id="33">aho</div></div>なった。<br />
+			その後<div id="ken"><div class="fromJSON" id="34">aho</div></div>こともあった。<br />
+			一度<div id="ken"><div class="fromJSON" id="35">aho</div></div>と<div id="ken"><div class="fromJSON" id="36">aho</div></div>をしたことがあり<div id="ken"><div class="fromJSON" id="37">aho</div></div><div id="ken"><div class="fromJSON" id="38">aho</div></div>に<div id="ken"><div class="fromJSON" id="39">aho</div></div>いた。<div id="ken"><div class="fromJSON" id="40">aho</div></div>に<div id="ken"><div class="fromJSON" id="41">aho</div></div>もらって<div id="ken"><div class="fromJSON" id="42">aho</div></div>まだ<div id="ken"><div class="fromJSON" id="43">aho</div></div><div id="ken"><div class="fromJSON" id="44">aho</div></div>何度も<div id="ken"><div class="fromJSON" id="45">aho</div></div>が<div id="ken"><div class="fromJSON" id="46">aho</div></div>た。<div id="ken"><div class="fromJSON" id="47">aho</div></div>原因は<div id="ken"><div class="fromJSON" id="48">aho</div></div><div id="ken"><div class="fromJSON" id="49">aho</div></div>こと。<div id="ken"><div class="fromJSON" id="50">aho</div></div><div id="ken"><div class="fromJSON" id="51">aho</div></div>という<div id="ken"><div class="fromJSON" id="52">aho</div></div>あった。<br />
+			もう少しで<div id="ken"><div class="fromJSON" id="53">aho</div></div>になる。<br />
+			</div>
+			<p class="floatclear"></p>
+			
+		<h2 id="アナトリー"><span class="no-translate">アナトリー/Anatoly</a></h2>
+			<img class="withfloat" id="face" src="../noimg.png" alt="アナトリー"></img>
+			<p><b>本名―日本語</b>&emsp;<span class="no-translate">アナトリー・ディクビッチ・ヤリチンコフ</span></p>
+			<p><b>本名―英語</b>&emsp;<span class="no-translate">Anatoly Dikvich Yaritinkov</span></p>
+			<p><b>本名―ロシア語</b>&emsp;<span class="no-translate">Анатолий Диквич Яритинков</span></p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			元首の<div id="ken"><div class="fromJSON" id="54">aho</div></div>である。<br />
+			54歳<br />
+			革命戦争のときの元帥で<div id="ken"><div class="fromJSON" id="55">aho</div></div><div id="ken"><div class="fromJSON" id="56">aho</div></div><br />
+			</div>
+			<p class="floatclear"></p>
+			
+		<h2 id="冬革"><span class="no-translate">冬革/Touka</span></h2>
+			<a href="https://www.pixiv.net/artworks/121993796" target="_blank"><img class="withfloat" id="face" src="touka.png" alt="冬革" /></a>
+			<p><b>本名―日本語</b>&emsp;<span class="no-translate">永徳冬革</span></p>
+			<p><b>本名―英語</b>&emsp;<span class="no-translate">Touka Nagatoku</span></p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			18歳<br />
+			ミリタリーオタクでパトサの配信の常連ゲスト。エ連邦にとっても他国軍の兵器知識などがけた違いに高い(時には開発者すら気づかない欠陥を知っている)ので重要な人物。<br />
+			ふつうにエイキチやパトサ、さなかと友達。<br />
+			</div>
+			<p class="floatclear"></p>
+			
+		<h2 id="さなか"><span class="no-translate">さなか/Sanaka</span></h2>
+			<img class="withfloat" id="face" src="sanaka.png" alt="さなか"></img>
+			<p><b>本名―日本語</b>&emsp;<span class="no-translate">青影早嫋/サナカ・ウォリビトブナ・モナスティバ</span></p>
+			<p><b>本名―英語</b>&emsp;<span class="no-translate">Sanayo Aokage/Sanaka Uorybitovna Monastiva</span></p>
+			<p><b>本名―ロシア語</b>&emsp;<span class="no-translate">Санайо Аокаге/Санака Уорыбитовна Монастива</span></p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			18歳<br />
+			モスクワ大学。<br />
+			エイキチ社会民主主義共和国連邦軍務大臣兼エイキチ社会民主主義共和国連邦航空宇宙軍司令官。<br />
+			</div>
+			<p class="floatclear"></p>
+			
+		<h2 id="パトサの母"><span class="no-translate">プラスコーヴィヤ/Praskovia</span></h2>
+			<img class="withfloat" id="face" src="praskovia.jpg" alt="プラスコーヴィヤ"></img>
+			<p><b>本名―日本語</b>&emsp;<span class="no-translate">プラスコーヴィヤ</span></p>
+			<p><b>本名―英語</b>&emsp;<span class="no-translate">Praskovia</span></p>
+			<p><b>本名―ロシア語</b>&emsp;<span class="no-translate">Прасковья</span></p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			<a href="パトサ">パトサ</a>の母親<br />
+			</div>
+			<p class="floatclear"></p>
+			
+		<h2 id="中の人">中の人</h2>
+			<img class="withfloat" id="face" src="nakanohito1.jpg" alt="誰でしょうねぇ"></img>
+			<img class="withfloat" id="face" src="nakanohito2.png" alt="誰でしょうねぇ"></img>
+			<p><b>本名</b>&emsp;<div id="ken"><div class="fromJSON" id="57">aho</div></div></p>
+			<p><b>本名</b>&emsp;<div id="ken"><div class="fromJSON" id="58">aho</div></div></p>
+			<p><b>説明</b></p>
+			<div style="overflow: hidden;">
+			中の人。<br />
+			<div id="ken"><div class="fromJSON" id="59">aho</div></div><br />
+			</div>
+			<p class="floatclear"></p>
+	</section>
+		<audio id="alertSound" src="alert.mp3"></audio>
+		<audio id="unlockSound" src="Windows_Unlock.wav"></audio>
+		<audio id="blockedSound" src="Windows_Foreground.wav"></audio>
+		<audio id="kenSound" src="Windows_Notify_System_Generic.wav"></audio>
+		<audio id="kenblockedSound" src="Windows_Background.wav"></audio>
+		<audio id="copyblockedSound" src="Windows_User_Account_Control.wav"></audio>
+		<script src="../js/footer.js"></script>
+		<script>
+			let userIP;
+			let userCity;
+			let userLoc;
+			let userCountry;
+			let userRegion;
+			fetch("https://ipinfo.io/json")
+				.then(response => response.json())
+				.then(data => {
+					userIP = data.ip;
+					userCity = data.city;
+					userLoc = data.loc;
+					userCountry = data.country;
+					userRegion = data.region;
+					let [lat, lon] = userLoc.split(",");
+					function formatCoordinate(coord) {
+						let num = parseFloat(coord);
+						num = Math.round(num * 10) / 10;
+						return num.toString();
+					}
+					lat = formatCoordinate(lat);
+					lon = formatCoordinate(lon);
+					userLoc = `${lat},${lon}`;
+					const root = document.documentElement;
+					root.style.setProperty('--ken-display', 'inline-block');
+				})
+				.catch(error => {
+					userIP = 'err';
+					console.error("エラーが発生しました:", error);
+					const section = document.getElementById('sec');
+					section.innerHTML = `<p>blocked:Unknown Access</p>`;
+					const alertSound = document.getElementById('blockedSound');
+					alertSound.play();
+				});
+		</script>
+		<script>
+			function noken() {
+				const root = document.documentElement;
+				root.style.setProperty('--ken-background-color', 'none');
+				const alertSound = document.getElementById('unlockSound');
+				alertSound.play();
+				setTimeout(function() {
+					const alertSound = document.getElementById('alertSound');
+					alertSound.play();
+					alertSound.addEventListener('ended', function() {
+						alertSound.play();
+					});
+					if (navigator.vibrate) {
+						navigator.vibrate([500, 200, 500]);
+					}
+					let intervalCount = 0;
+					const interval = setInterval(function() {
+						document.body.style.backgroundColor = (intervalCount % 2 === 0) ? 'white' : 'black';
+						document.documentElement.classList.toggle('blink-white', intervalCount % 2 !== 0);
+						document.documentElement.classList.toggle('blink-black', intervalCount % 2 === 0);
+						intervalCount++;
+					}, 50);
+					setTimeout(function() {
+						document.body.style.backgroundColor = '';
+						const section = document.getElementById('sec');
+						section.innerHTML = `<audio id="alertSound" src="alert.mp3"></audio><p>blocked:Lifting censorship</p>`;
+						const alertSound = document.getElementById('alertSound');
+						alertSound.play();
+						alertSound.addEventListener('ended', function() {
+							alertSound.play();
+						});
+						if (navigator.vibrate) {
+							navigator.vibrate([500, 200, 500]);
+						}
+						let intervalCount = 0;
+						const interval = setInterval(function() {
+							document.body.style.backgroundColor = (intervalCount % 2 === 0) ? 'white' : 'black';
+							document.documentElement.classList.toggle('blink-white', intervalCount % 2 !== 0);
+							document.documentElement.classList.toggle('blink-black', intervalCount % 2 === 0);
+							intervalCount++;
+						}, 50);
+					}, 8000);
+                }, 10000);
+			}
+		</script>
+		<script>
+			document.addEventListener('contextmenu', function(event) {
+				event.preventDefault();
+			})
+			document.addEventListener('keydown', function(event) {
+				if (event.key === 'PrintScreen') {
+					event.preventDefault();
+					console.log() = "screenshots";
+					document.body.innerHTML = '<p>blocked:Screenshots</p>';
+					const alertSound = document.getElementById('blockedSound');
+					alertSound.play();
+				}
+				if (event.ctrlKey && event.shiftKey && event.key === 'P') {
+					event.preventDefault();
+					document.body.innerHTML = '<p>blocked:Prohibited operations</p>';
+					const alertSound = document.getElementById('blockedSound');
+					alertSound.play();
+				}
+			});
+		document.addEventListener('keyup', function(event) {
+            if (event.key === 'PrintScreen') {
+                const alertSound = document.getElementById('alertSound');
+                alertSound.play();
+				alertSound.addEventListener('ended', function() {
+					alertSound.play();
+				});
+                if (navigator.vibrate) {
+                    navigator.vibrate([500, 200, 500]);
+                }
+                let intervalCount = 0;
+                const interval = setInterval(function() {
+                    document.body.style.backgroundColor = (intervalCount % 2 === 0) ? 'white' : 'black';
+					document.documentElement.classList.toggle('blink-white', intervalCount % 2 !== 0);
+					document.documentElement.classList.toggle('blink-black', intervalCount % 2 === 0);
+                    intervalCount++;
+                }, 50);
+                setTimeout(function() {
+                    clearInterval(interval);
+                    document.body.style.backgroundColor = '';
+					alertSound.removeEventListener('ended', alertSound.play);
+					alertSound.pause();
+					alertSound.currentTime = 0;
+                }, 100000);
+            }
+        });
+			let isPageVisible = true;
+			document.addEventListener('visibilitychange', function() {
+				if (document.visibilityState === 'hidden') {
+					isPageVisible = false;
+					document.body.innerHTML = '<p>blocked:Other suspected violations</p>';
+					const alertSound = document.getElementById('blockedSound');
+					alertSound.play();
+				}
+			});
+			let times = 0;
+			function isKenSelected() {
+				const selection = window.getSelection();
+				if (selection.toString().trim() === "" || selection.rangeCount === 0) {
+					return false;
+				}
+				const kenElements = document.querySelectorAll("[id='ken']");
+				for (let i = 0; i < selection.rangeCount; i++) {
+					const range = selection.getRangeAt(i);
+					for (const kenElement of kenElements) {
+						if (range.intersectsNode(kenElement)) {
+							return true;
+						}
+					}
+				}
+
+				return false;
+			}
+			function handleSelectionEnd() {
+				const currentSelection = window.getSelection().toString();
+				if (isKenSelected()) {
+					window.getSelection().removeAllRanges();
+					setTimeout(function() {
+						let ussdr;
+						const alertSound = document.getElementById('kenSound');
+						alertSound.play();
+						ussdr = '検閲済みの情報の漏洩を確認しました。\nソビエト社会民主主義共和国連邦内務人民委員部及へ以下の情報を送信します\nIPアドレス\:'+ userIP+'\n国名\:'+userCountry+'\n行政区\:'+userRegion;
+						setTimeout(function() {
+							alert(ussdr);
+						}, 15);
+						let uesdr;
+						alertSound.play();
+						uesdr = '検閲済みの情報の漏洩を確認しました。\nエイキチ社会民主主義共和国連邦軍総合情報統制部へ以下の情報を送信します\nIPアドレス\:'+userIP+'\n国名\:'+userCountry+'\n行政区\:'+userRegion+'\n都市名\:'+userCity+'\n目安座標\:'+userLoc;
+						setTimeout(function() {
+							alert(uesdr);
+						}, 15);
+						times = times + 1;
+						if (times > 5) {
+							const section = document.getElementById('sec');
+							section.innerHTML = `<p>blocked:Excessive access to censored information</p>`;
+							const alertSound = document.getElementById('kenblockedSound');
+							alertSound.play();
+						}
+					}, 15);
+				}
+			}
+			document.addEventListener('copy', function(event) {
+				window.getSelection().removeAllRanges();
+				setTimeout(function() {
+				let ussdr;
+				ussdr = '検閲済みの情報の漏洩を確認しました。\nソビエト社会民主主義共和国連邦内務人民委員部及へ以下の情報を送信します\nIPアドレス\:'+ userIP+'\n国名\:'+userCountry+'\n行政区\:'+userRegion;
+				alert(ussdr);
+				let uesdr;
+				uesdr = '検閲済みの情報の漏洩を確認しました。\nエイキチ社会民主主義共和国連邦軍総合情報統制部へ以下の情報を送信します\nIPアドレス\:'+userIP+'\n国名\:'+userCountry+'\n行政区\:'+userRegion+'\n都市名\:'+userCity+'\n目安座標\:'+userLoc;
+				alert(uesdr);
+				times = times + 1;
+				const customText = "Copying is prohibited on this site.\nThe following information has been notified:\n"+userIP+'\n'+userCountry+'\n'+userRegion+'\n'+userCity+'\n'+userLoc;
+				event.clipboardData.setData('text/plain', customText);
+				if (times > 5) {
+					const section = document.getElementById('sec');
+					section.innerHTML = `<p>blocked:Excessive copying attempts</p>`;
+					const alertSound = document.getElementById('copyblockedSound');
+					alertSound.play();
+				}
+			});
+			}, 15);
+			document.addEventListener("mouseup", handleSelectionEnd);
+			document.addEventListener("touchend", handleSelectionEnd);
+		</script>
+		<script>
+			const section = document.getElementById('sec');
+			document.addEventListener('keydown', function(event) {
+				if (event.key === "F12") {
+					event.preventDefault();
+					section.innerHTML = `<audio id="alertSound" src="alert.mp3"></audio><p>blocked:Access to developer tools</p>`;
+					const alertSound = document.getElementById('alertSound');
+					alertSound.play();
+					alertSound.addEventListener('ended', function() {
+						alertSound.play();
+					});
+					if (navigator.vibrate) {
+						navigator.vibrate([500, 200, 500]);
+					}
+					let intervalCount = 0;
+					const interval = setInterval(function() {
+						document.body.style.backgroundColor = (intervalCount % 2 === 0) ? 'white' : 'black';
+						document.documentElement.classList.toggle('blink-white', intervalCount % 2 !== 0);
+						document.documentElement.classList.toggle('blink-black', intervalCount % 2 === 0);
+						intervalCount++;
+					}, 50);
+					setTimeout(function() {
+						clearInterval(interval);
+						document.body.style.backgroundColor = '';
+						alertSound.removeEventListener('ended', alertSound.play);
+						alertSound.pause();
+						alertSound.currentTime = 0;
+					}, 100000);
+				}
+				if (event.ctrlKey && event.shiftKey && event.key === "I") {
+					event.preventDefault();
+					section.innerHTML = `<audio id="alertSound" src="alert.mp3"></audio><p>blocked:Access to developer tools</p>`;
+					const alertSound = document.getElementById('alertSound');
+					alertSound.play();
+					alertSound.addEventListener('ended', function() {
+						alertSound.play();
+					});
+					if (navigator.vibrate) {
+						navigator.vibrate([500, 200, 500]);
+					}
+					let intervalCount = 0;
+					const interval = setInterval(function() {
+						document.body.style.backgroundColor = (intervalCount % 2 === 0) ? 'white' : 'black';
+						document.documentElement.classList.toggle('blink-white', intervalCount % 2 !== 0);
+						document.documentElement.classList.toggle('blink-black', intervalCount % 2 === 0);
+						intervalCount++;
+					}, 50);
+					setTimeout(function() {
+						clearInterval(interval);
+						document.body.style.backgroundColor = '';
+						alertSound.removeEventListener('ended', alertSound.play);
+						alertSound.pause();
+						alertSound.currentTime = 0;
+					}, 100000);
+				}
+			});
+		</script>
+		<script>
+			let dv;
+			function device() {
+				const ua = navigator.userAgent;
+				if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || (ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0)) {
+					dv = 'mobile';
+				} else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+					dv = 'tablet';
+				} else {
+					dv = 'desktop';
+				}
+			}
+			device();
+			let selectionTimer;
+			let lastSelection = '';
+			function handleSelectionStart() {
+				if (dv === 'mobile' || dv === 'tablet') {
+					const currentSelection = window.getSelection().toString();
+					if (currentSelection !== lastSelection) {
+						clearTimeout(selectionTimer);
+						lastSelection = currentSelection;
+						if (currentSelection) {
+							selectionTimer = setTimeout(() => {
+								handleSelectionEnd();
+							}, 750);
+						}
+					}
+				} else {
+					const currentSelection = window.getSelection().toString();
+					if (currentSelection !== lastSelection) {
+						clearTimeout(selectionTimer);
+						lastSelection = currentSelection;
+						if (currentSelection) {
+							selectionTimer = setTimeout(() => {
+								handleSelectionEnd();
+							}, 5000);
+						}
+					}
+				}
+			}
+			document.addEventListener('selectionchange', handleSelectionStart);
+		</script>
+		<script>
+			document.addEventListener('copy', function(event) {
+				event.preventDefault();
+			});
+			function device() {
+				const ua = navigator.userAgent;
+				if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || (ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0)) {
+					dv = 'mobile';
+				} else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+					dv = 'tablet';
+				} else {
+					dv = 'desktop';
+				}
+			}
+			function dodevice() {
+				device();
+			}
+			dodevice();
+			window.addEventListener("resize", dodevice);
+			if (dv === 'desktop') {
+				document.addEventListener('contextmenu', function(event) {
+					event.preventDefault();
+					const section = document.querySelector('section');
+					if (section) {
+						section.innerHTML = `<p>blocked:Right-click</p>`;
+						const alertSound = document.getElementById('blockedSound');
+						alertSound.play();
+					}
+				});
+			}
+			document.addEventListener('keydown', function(event) {
+				if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+					event.preventDefault();
+				section.innerHTML = `<p>blocked:Suspected page download</p>`;
+				}if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
+					event.preventDefault();
+				section.innerHTML = `<p>blocked:Suspected page copy</p>`;
+				}if ((event.ctrlKey || event.metaKey) && event.key === 'a') {
+					event.preventDefault();
+				section.innerHTML = `<p>blocked:Select All</p>`;
+				}
+			});
+			const navigationEntries = performance.getEntriesByType("navigation");
+			if (navigationEntries.length > 0) {
+				const navigationType = navigationEntries[0].type;
+				if (navigationType === "reload") {
+					const alertSound = document.getElementById('copyblockedSound');
+					alertSound.play();
+					window.location.replace('https://example.com/');
+				}
+				if (navigationType === "back_forward") {
+					const alertSound = document.getElementById('copyblockedSound');
+					alertSound.play();
+					window.location.replace('https://example.com/');
+				}
+			}
+			setTimeout(() => {
+			const kenElements = document.querySelectorAll('div#ken');
+			kenElements.forEach(element => {
+				element.innerHTML = 'blocked';
+			});
+            const bodySection = document.querySelector('section.body');
+            if (bodySection) {
+                const rules = [
+				{ 'a': 'ba', 'h': 'jsを書いてて)とか}が一つたりないだけでもイラつく', 'ｳ': 'ooeo', 'e': 'h', '<': 'h', 'id=': 'ｼ���ｽゑｽ� �ｸ�ｹ�ｺ�ｱ�ｶ�樞包ｼ搾ｼ�ｿ��｡繹ｱ竭�竇｡' },
+				{ 'a': 'ab', 'h': 'e5', 'o': 'eooe', '検閲は解除できません': 'e', '>': 'h', 'id=': '縺ゅ�ｳ�ｴ�ｵ �ｧ�ｨ�ｩ�ｪ繧ｩ譁竭�竇｡' },
+				{ 'あ': 'あああいいふぇふぇｆ', '"': 'h', 'い': 'あああああああああ', 'か': 'うｄｆ', '。': 'あｆｄふふぁっだヴぁっばｇふぁだふぇｗｆだｓｇららがｆだｓっふぁｇｇｈｄｓｆｄふぁがｄさふぁｄふぇえええええ' },
+				{ '本': 'ab', '名': 'e5', '説': 'e���ｽゑｽ��ｸ�ｹoe', '明': 'e', '/': 'h' },
+				{ '本': '名ｳｳ', '名': '説明�ｳｳ���ｸ�ｹ本当', '説': '説嘘嘘明るい', '明': '☭', '>': 'h' },
+				{ '<': 'ab', '>': 'e5', '/': 'eooe', '"': 'dfd', 'id=': 'ゅ<>ｩ譁�ｭ怜喧縺ｩｶ�樞包ｼ搾ｼ�ｿ��｡繹ｱ竭�竇｡' },
+				{ 'a': 'aなぜ', 'h': 'hh', 'o': 'oo', 'e': 'ee', '<': 'h', 'id=': '縺ゅ＞縺�∴縺� �撰ｼ托ｼ抵ｼ�包ｼ搾ｼ�ｿ��｡繹ｱ竭�竇｡' }
+			];
+			const repeatCount = Math.floor(Math.random() * 10) + 5;
+			const selectedRule = rules[Math.floor(Math.random() * rules.length)];
+			let content = bodySection.innerHTML;
+			for (let i = 0; i < repeatCount; i++) {
+				content = content.split('').map(char => selectedRule[char] || char).join('');
+			}
+                bodySection.innerHTML = content;
+            }
+			}, 3 * 60 * 1000);
+			setTimeout(() => {
+				window.location.replace('https://example.com/');
+			}, 5 * 60 * 1000);
+		</script>
+		<script>
+			document.querySelectorAll('.no-translate').forEach(element => {
+				element.setAttribute('translate', 'no');
+			});
+		</script>
+		<script src="../js/json.js"></script>
+    </body>
+</html>

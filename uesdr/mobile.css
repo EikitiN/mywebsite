@@ -1,0 +1,127 @@
+body{margin: 0;}
+section.body{margin: 8px;}
+.icon-link {
+	position: absolute;
+	top: 7.5px;
+	left: 25px;
+	width: 30px;
+	height: 45px;
+	z-index: 2;
+}
+.icon-link img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+img :not(#wXXL):not(#XXL):not(#XL):not(#L):not(#ML):not(#M):not(#SM):not(#S):not(#XS):not(#XXS) {width: clamp(200px, clac(200px+0.25vw), 1400px);}
+.fortest {color: blue;}
+.withfloat {}
+.withfloat2 {
+	display: flex;
+	flex-wrap: wrap;
+}
+.floatclear {clear: both;}
+.kouzichuu {color: red;}
+p {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	line-height: 2;
+	font-size: 16px;
+}
+html { scroll-behavior: smooth;}
+p#margin-left1{margin-left: 7px;}
+#font-S{font-size: 13px;}
+#font-SM{font-size: 16px;}
+#font-M{font-size: 17px;}
+#font-ML{font-size: 20px;}
+#font-L{font-size: 21px;}
+html {background-color: #ffddb0;}
+img#wXXL {width: 125vh;}
+img#XXL {height: 98vh;}
+img#XL {width: 95vw;}
+img#wXL {width: 95vw;}
+img#L {width: 75vw;}
+img#xL {width: 75vw;}
+img#ML {width: 60vw;}
+img#wML {width: 60vw;}
+img#M {width: 45vw;}
+img#wM {width: 45vw;}
+img#SM {width: 30vw;}
+img#S {width: 20vw;}
+img#XS {width: 10vw;}
+img#XXS {width: 10px;}
+img#face {
+	aspect-ratio: 3 / 4;
+	height: 50vh;
+  object-fit: cover;
+}
+iframe#youtube {
+	aspect-ratio: 16 / 9;
+	width:90vw;
+}
+.parent ul{display: none;}
+.active ul {display: block;}
+.download-btn{
+	display: block;
+	padding: 10px;
+	margin-left: 20px;
+	display: inline-block;
+	background: #444444;
+	color: #fff;
+	text-align: center;
+	border: solid 1px currentColor;
+	transition: all 0.3s;
+	border-radius: 20px;
+}
+.download-btn:hover, 
+.download-btn:focus {
+  color: #000;
+  background: #fff;
+  border-color: #000;
+}
+.pagelink {
+	border: solid 5px #cd0000;
+	padding: 0.7em;
+	margin-left: 0.5em;
+	display: inline-block;
+	border-radius: 20px;
+}
+.indexbox{
+	width: clamp(225px,43vw,750px);
+	aspect-ratio: 3 / 2;
+	position: relative;
+	background-size: cover;
+	margin: 0.25vw;
+	border: solid 1.5px gray;
+	border-radius: 15px;
+}@media screen and (max-width:500px) {.indexbox{width: 93vw;}}
+.miniindexbox{
+	width: clamp(225px,22vw,750px);
+	aspect-ratio: 3 / 2;
+	position: relative;
+	background-size: cover;
+	margin: 0.85vw;
+	border: solid 2px gray;
+	border-radius: 15px;
+}@media screen and (max-width:450px) {.miniindexbox{width: 43vw;}
+}@media screen and (max-width:225px) {.miniindexbox{width: 98vw;}}
+.indexbox2{
+	position: absolute;
+	bottom: 0;
+	display: flex; align-items: center; justify-content: center;
+	color: #ffffff;
+	width: 100%;
+	height: 30%;
+	text-align: center;
+	background-color: rgba(200,50,50,0.75);
+	border-radius: 0 0 14px 14px;
+}
+#fc2_footer{
+	font-size: 0px;
+    overflow-wrap: anywhere;
+    /* text-align: center; */
+    width: 1%;
+    line-height: 0px;
+    /* text-align: right; */
+    display: inline-block
+}

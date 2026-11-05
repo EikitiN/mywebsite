@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="ja">
+    <head prefix="og: https://ogp.me/ns#">
+        <meta charset="UTF-8" />
+		<link rel="icon" href="../favicon.png"> 
+		<link rel="shortcut icon" href="../favicon.png">
+		<link rel="apple-touch-icon" href="../favicon.png"> 
+		<link rel="stylesheet" href="../mobile.css" type="text/css" media="screen and (max-width: 749px)">
+		<link rel="stylesheet" href="../pc.css" type="text/css" media="screen and (min-width: 750px)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="robots" content="noindex" />
+		<meta name="description" content="人工言語"/>
+		<meta property="og:title" content="人工言語の変換｜UESDR-エ連邦"/>
+		<meta property="og:url" content="https://eikitin.github.io/mywebsite/uesdr/our_language/our_language.html"/>
+		<meta property="og:image" content="https://eikitin.github.io/mywebsite/uesdr/index/top-1.png"/>
+		<meta name="author" content="エイキチ(エ連邦)" />
+		<script src="../js/header.js"></script>
+		<style>
+			.inout{padding: 0 10px;}
+			@media screen and (max-width: 749px){
+				.inout{display: block;}
+				.inout article{width: 90%;}
+			}
+			@media screen and (min-width: 750px){
+				.inout{display: flex;}
+				.inout article{width: calc((100vw - 20px));}
+			}
+			table.input{border: solid 1px black;}
+			table.input input{
+				box-sizing: border-box;
+				display: block;
+				width: 100%;
+				padding: 0;
+				transform-origin: left center;
+			}
+			table.input th{border: solid 1px black}
+			table{width: 100%;}
+			input#inputhyouki{
+				font-weight: 550;
+				transform: scale(0.64, 1);
+				width: calc(100% * 1.5625);
+			}
+					
+			/* Qaballa入力モード切り替え */
+		.input-mode {
+			margin: 10px 0;
+		}
+		
+		/* 縦並び入力欄のスタイル */
+		.vertical-inputs {
+			border: solid 1px black;
+			padding: 10px;
+		}
+		
+		.input-row {
+			display: flex;
+			align-items: center;
+			margin: 5px 0;
+		}
+		
+		.input-row label {
+			width: 80px;
+			font-weight: bold;
+			margin-right: 10px;
+		}
+		
+		.input-row input {
+			flex: 1;
+			padding: 5px;
+			box-sizing: border-box;
+		}
+		
+		/* 元の入力テーブルのスタイルを維持 */
+		table.input {
+			border: solid 1px black;
+		}
+		table.input th, table.input td {
+			border: solid 1px black;
+		}
+		table.input input {
+			box-sizing: border-box;
+			display: block;
+			width: 100%;
+			padding: 0;
+			transform-origin: left center;
+		}
+		input#inputhyouki {
+			font-weight: 550;
+			transform: scale(0.64, 1);
+			width: calc(100% * 1.5625);
+		}
+		@media screen and (min-width: 750px){
+			section.qaballa {display: flex;}
+			section.qaballa > article {width: calc((100vw - 20px) / 2);}
+		}
+		#kensakushuturyokubasho{background: #FFB428;}
+		</style>
+        <title>人工言語索引</title>
+    </head>
+    <body>
+		<header id="header" data-header-text="人工言語索引"></header>
+	<section class="body">
+		<b>これは「辞書」です。基本形で検索しないと出て来ません。<br>一単語ずつ検索してください。翻訳機じゃないです。</b>
+		<p>現在単語が完成するのを待っています。</p>
+		<section class="inout">
+			<article class="input" style="border-top: 1px solid blue;">
+				<h2>表記から意味</h2>
+				<p>小文字大文字どちらにも対応させました。データに大文字を入力しても反映されるわけないです。</p>
+				<table class="input">
+					<thead>
+					<tr>
+						<th>要素</th>
+						<th>値</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<th>表記</th>
+						<th><input id="inputhyouki"></input></th>
+					</tr><tr>
+						<th>仮表記</th>
+						<th><input id="inputkari"></input></th>
+					</tr>
+					<tr>
+						<th>データ</th>
+						<th><input id="inputdata"></input></th>
+					</tr>
+					</tbody>
+				</table>
+				<section id="kensakushuturyokubasho"><h4>検索結果</h4>
+					<div id="kensakuout"></div>
+				</section>
+			</article>
+			
+			<article class="output" style="border-top: 1px solid blue;">
+				<h2>意味から表記</h2>
+				<h4>意味を入力</h4>
+				<input id="imi"></input>
+				<section id="kensakushuturyokubasho"><h4>検索結果</h4>
+					<div id="imikarakensakuout"></div>
+				</section>
+			</article>
+		</section>
+		<section class="qaballa" style="border-top: 2px solid blue;">
+			<article style="border-top: 1px solid blue;">
+			<h2>Qaballa</h2>
+			<fieldset style="display: inline;">
+				<legend>選択</legend>
+				<input type="radio" id="English" name="qaballa" value="English" checked />
+				<label for="English">English Qaballa</label>
+				<input type="radio" id="Ours" name="qaballa" value="Ours" />
+				<label for="Ours">Ike's Qaballa</label>
+			</fieldset>
+			
+			<div id="qaballaInputContainer">
+				<!-- Englishモード用の単一入力欄 -->
+				<div id="englishInput" class="input-mode">
+					<p>Qaballa数値にする文字列を入力</p>
+					<input id="inputEnglishQaballa" style="width: 300px;">
+				</div>
+				
+				<!-- Ourモード用の3入力欄（縦並び） -->
+				<div id="oursInput" class="input-mode" style="display: none;">
+					<p>Qaballa数値にする文字列を入力（いずれかの欄に入力）</p>
+					<div class="vertical-inputs" style="width: 50vw; max-width: 500px;">
+						<div class="input-row">
+							<label>表記</label>
+							<input id="inputHyoukiQaballa">
+						</div>
+						<div class="input-row">
+							<label>仮表記</label>
+							<input id="inputKariQaballa">
+						</div>
+						<div class="input-row">
+							<label>データ</label>
+							<input id="inputDataQaballa">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<br />
+			<fieldset id="outputqaballa" style="display: inline; min-width: 15vw;">
+				<legend>出力</legend>
+				<div id="outputqaballabox"></div>
+			</fieldset></article>
+			<article style="border-top: 1px solid blue;">
+				<h2>同一Qaballaの候補</h2><span style="font-size: 10px;">
+				<p style="font-size: 10px;">Ike's Qaballaのときのみ有効です</p>
+				
+				<!-- 処理モード選択を追加 -->
+				<fieldset style="display: inline; margin-bottom: 10px;">
+					<legend>処理モード選択</legend>
+					<input type="radio" id="lightMode" name="processingMode" value="light" checked />
+					<label for="lightMode">軽量モード</label>
+					<input type="radio" id="fullMode" name="processingMode" value="full" />
+					<label for="fullMode">全処理モード</label>
+				</fieldset>
+				<p>全処理モードはすべて出て来ません。完全に生成したい場合はアプリケーションを使用する必要があります。</p>
+				
+				<!-- 軽量モード用の個数指定 -->
+				<div id="lightModeSettings" style="margin: 10px 0;">
+					<label for="realisticMode">文字数制限: </label>
+					<input type="radio" id="realisticMode" name="lengthMode" value="realistic" checked />
+					<label for="realisticMode">現実的</label>
+					<input type="radio" id="theoreticalMode" name="lengthMode" value="theoretical" />
+					<label for="theoreticalMode">理論値</label>
+					<br>
+					
+					<label for="generateCount">生成する単語数 (最大10000): </label>
+					<input type="number" id="generateCount" min="1" max="10000" value="100" style="width: 80px;">
+					<br><span>注:生成される単語数は指定より少ない場合があります。</span>
+				</div>
+				
+				<fieldset style="display: inline;">
+					<legend>出力を選択</legend>
+					<input type="radio" id="Kanji" name="qaballaex" value="Kanji"/>
+					<label for="English">表記で出力</label>
+					<input type="radio" id="Karihyouki" name="qaballaex" value="Karihyouki"/>
+					<label for="English">仮表記で出力</label>
+					<input type="radio" id="Data" name="qaballaex" value="Data" checked/>
+					<label for="English">データで出力</label>
+				</fieldset><br />
+				<button class="qaballacreate" type="button">生成</button><br />
+				<b>同一Qaballa</b>
+				<div class="qaballaex" id="exactly"></div>
+				<b>±1までのQaballa</b>  <!-- ±2から±1に変更 -->
+				<div class="qaballaex" id="pm2"></div>
+			</span></article>
+			<!--<article>
+				<h2>同一Qaballaの候補</h2><span style="font-size: 10px;">
+				<p style="font-size: 10px;">Ike's Qaballaのときのみ有効です</p>
+				<fieldset style="display: inline;">
+					<legend>出力を選択</legend>
+					<input type="radio" id="Kanji" name="qaballaex" value="Kanji"/>
+					<label for="English">表記で出力</label>
+					<input type="radio" id="Karihyouki" name="qaballaex" value="Karihyouki"/>
+					<label for="English">仮表記で出力</label>
+					<input type="radio" id="Data" name="qaballaex" value="Data" checked/>
+					<label for="English">データで出力</label>
+				</fieldset><br />
+				<button class="qaballacreate" type="button">生成</button><br />
+				<b>同一Qaballa</b>
+				<div class="qaballaex" id="exactly"></div>
+				<b>±2までのQaballa</b>
+				<div class="qaballaex" id="pm2"></div>
+			</span></article>-->
+			
+		</section>
+		<article>
+			<h2>qaballa生成システムのダウンロード</h2>
+			<h3>Windows版(Win7~)</h3>
+				<p>インストール不要ですぐ使えます</p>
+				<p>現在Windowsのウイルス対策ソフトにトロイの木馬判定されています。Microsoftに修正を報告しています。</p>
+				<p>報告が完了しました。WindowsDefenderによってウイルスとみなされてしまう場合は以下の方法でWindowsDefenderを更新してください。</p>
+				<fieldset>
+					<legend>更新方法</legend>
+					<span style="color: #303030; font-size: 11px;">
+					1. 管理者としてコマンドプロンプトを開き、ディレクトリをc:\Program Files\Windows Defenderに変更します。<br />
+					2. 「MpCmdRun.exe -removedefinitions -dynamicsignatures」を実行します。<br />
+					3.「MpCmdRun.exe -SignatureUpdate」を実行します。<br />
+					または、最新の定義はこちらからダウンロードできます: <a href="https://docs.microsoft.com/microsoft-365/security/defender-endpoint/manage-updates-baselines-microsoft-defender-antivirus">こちら</a>
+					</span>
+				</fieldset>
+				<a href="release/WoadGeneratorWindows-v1.2.zip" download="WoadGeneratorWindows-v1.2.zip">Windows版(C++)|最終更新:2025/10/3 ダウンロードサイズ:43KB</a><br />
+				<a href="release/WoadGeneratorWindows-v1.3.zip" download="WoadGeneratorWindows-v1.3.zip">Windows版(C++)|最終更新:2025/10/3 ダウンロードサイズ:45KB</a><br />
+				<a href="release/WoadGeneratorWindows-v1.4.zip" download="WordGeneratorWindows-v1.4.zip">Windows版(C++)|最終更新:2025/10/4 ダウンロードサイズ:44KB</a><br />
+				<a href="release/WoadGeneratorWindows-v1.5.zip" download="WordGeneratorWindows-v1.5.zip">C++最新版Windows版(C++)|最終更新:2025/10/4 ダウンロードサイズ:47KB</a><br />
+				<a href="https://drive.google.com/file/d/1Mf6kgqUB4VN0tGGOE2z0vNMvtnU0EJIg/view?usp=sharing" download="WordGeneratorPython.exe">Python最新版Windows版(Python)|最終更新:2025/10/7 ダウンロードサイズ:11.7MB</a><br />
+				<a href="release/WoadGeneratorAndroid_v1.0.zip" download="WoadGeneratorAndroid_v1.0.zip">C++最新版Android版(C++)|最終更新:2025/10/14 ダウンロードサイズ:4.9MB</a><br />
+		</article>
+	</section>
+		<script src="../js/footer.js"></script>
+		<script src="qaballa.js"></script>
+		<script src="word_generator.js"></script>
+		<script src="search.js"></script>
+		<script src="meaning_search.js"></script>
+<script>
+// 既存の変換スクリプト（characterDataの宣言を削除）
+const jsonFilePath = 'character.json';
+// let characterData = []; ← この行を削除
+
+// JSON読み込み
+fetch(jsonFilePath)
+  .then(response => {
+    if (!response.ok) throw new Error(`HTTPエラー: ${response.status}`);
+    return response.json();
+  })
+  .then(data => {
+    // グローバル変数に代入（宣言はしない）
+    window.characterData = data;
+    initInputHandlers();
+  })
+  .catch(error => {
+    console.error('JSON読み込み失敗:', error);
+    window.characterData = [];
+    initInputHandlers();
+  });
+
+function initInputHandlers() {
+  const inputs = {
+    hyouki: document.getElementById('inputhyouki'),
+    kari: document.getElementById('inputkari'),
+    data: document.getElementById('inputdata')
+  };
+
+  // 入力イベントリスナー登録
+  Object.keys(inputs).forEach(key => {
+    inputs[key].addEventListener('input', (e) => {
+      processFullTextSync(key);
+    });
+  });
+
+  // 文字列全体を解析して同期
+  function processFullTextSync(activeKey) {
+    const activeText = inputs[activeKey].value;
+    let results = {
+      hyouki: activeKey === 'hyouki' ? activeText : '',
+      kari: activeKey === 'kari' ? activeText : '',
+      data: activeKey === 'data' ? activeText : ''
+    };
+
+    // 変換マッピング設定
+    const conversionRules = {
+      hyouki: {
+        searchKey: 'character',
+        kari: (found) => found ? found.sub : '',
+        data: (found) => found ? found.data : ''
+      },
+      kari: {
+        searchKey: (char) => {
+          const foundSub = window.characterData.find(item => item.sub === char);
+          if (foundSub) return { key: 'sub', found: foundSub };
+          
+          const foundSubBig = window.characterData.find(item => item.sub_big === char);
+          if (foundSubBig) return { key: 'sub_big', found: foundSubBig };
+          
+          return null;
+        },
+        hyouki: (found) => found ? found.character : '',
+        data: (found) => found ? found.data : ''
+      },
+      data: {
+        searchKey: 'data',
+        hyouki: (found) => found ? found.character : '',
+        kari: (found) => found ? found.sub : ''
+      }
+    };
+
+    // 1文字ずつ処理
+    for (let i = 0; i < activeText.length; i++) {
+      const char = activeText[i];
+      const rule = conversionRules[activeKey];
+      
+      // 特殊処理: inputkariの検索
+      let found;
+      if (activeKey === 'kari') {
+        const searchResult = rule.searchKey(char);
+        found = searchResult ? searchResult.found : null;
+      } else {
+        found = window.characterData.find(item => item[rule.searchKey] === char);
+      }
+
+      // 他の欄に変換結果を追加
+      Object.keys(results).forEach(targetKey => {
+        if (targetKey !== activeKey && rule[targetKey]) {
+          results[targetKey] += rule[targetKey](found) || char;
+        }
+      });
+    }
+
+    // 結果を反映（変更がある場合のみ）
+    Object.keys(inputs).forEach(key => {
+      if (inputs[key].value !== results[key]) {
+        inputs[key].value = results[key];
+      }
+    });
+  }
+}
+</script>
+		<!--<script>
+const jsonFilePath = 'character.json';
+let characterData = [];
+
+// JSON読み込み
+fetch(jsonFilePath)
+  .then(response => {
+    if (!response.ok) throw new Error(`HTTPエラー: ${response.status}`);
+    return response.json();
+  })
+  .then(data => {
+    characterData = data;
+    initInputHandlers();
+  })
+  .catch(error => {
+    console.error('JSON読み込み失敗:', error);
+    characterData = [];
+    initInputHandlers();
+  });
+
+function initInputHandlers() {
+  const inputs = {
+    hyouki: document.getElementById('inputhyouki'),
+    kari: document.getElementById('inputkari'),
+    data: document.getElementById('inputdata')
+  };
+
+  // 入力イベントリスナー登録
+  Object.keys(inputs).forEach(key => {
+    inputs[key].addEventListener('input', (e) => {
+      processFullTextSync(key);
+    });
+  });
+
+  // 文字列全体を解析して同期
+  function processFullTextSync(activeKey) {
+    const activeText = inputs[activeKey].value;
+    let results = {
+      hyouki: activeKey === 'hyouki' ? activeText : '',
+      kari: activeKey === 'kari' ? activeText : '',
+      data: activeKey === 'data' ? activeText : ''
+    };
+
+    // 変換マッピング設定 (inputkari用に優先順位追加)
+    const conversionRules = {
+      hyouki: {
+        searchKey: 'character',
+        kari: (found) => found ? found.sub : '',
+        data: (found) => found ? found.data : ''
+      },
+      kari: {
+        searchKey: (char) => {
+          const foundSub = characterData.find(item => item.sub === char);
+          if (foundSub) return { key: 'sub', found: foundSub };
+          
+          const foundSubBig = characterData.find(item => item.sub_big === char);
+          if (foundSubBig) return { key: 'sub_big', found: foundSubBig };
+          
+          return null;
+        },
+        hyouki: (found) => found ? found.character : '',
+        data: (found) => found ? found.data : ''
+      },
+      data: {
+        searchKey: 'data',
+        hyouki: (found) => found ? found.character : '',
+        kari: (found) => found ? found.sub : ''
+      }
+    };
+
+    // 1文字ずつ処理
+    for (let i = 0; i < activeText.length; i++) {
+      const char = activeText[i];
+      const rule = conversionRules[activeKey];
+      
+      // 特殊処理: inputkariの検索
+      let found;
+      if (activeKey === 'kari') {
+        const searchResult = rule.searchKey(char);
+        found = searchResult ? searchResult.found : null;
+      } else {
+        found = characterData.find(item => item[rule.searchKey] === char);
+      }
+
+      // 他の欄に変換結果を追加
+      Object.keys(results).forEach(targetKey => {
+        if (targetKey !== activeKey && rule[targetKey]) {
+          results[targetKey] += rule[targetKey](found) || char;
+        }
+      });
+    }
+
+    // 結果を反映（変更がある場合のみ）
+    Object.keys(inputs).forEach(key => {
+      if (inputs[key].value !== results[key]) {
+        inputs[key].value = results[key];
+      }
+    });
+  }
+}
+		</script>-->
+    </body>
+</html>
