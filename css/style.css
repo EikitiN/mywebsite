@@ -13,6 +13,9 @@ h2{
 h1{
     font-size: 18pt;
 }
+h1.title{
+    word-break: keep-all;
+}
 p{
     font-size: 13pt;
     line-height: 1.6;
@@ -53,4 +56,46 @@ a.a-nodesign{
     margin: 0;
     font-weight: bold;
     color: #1A1A1A;
+}
+
+div#footer-container{
+    margin-top: 10px;
+}
+footer{
+    background-color: #222;
+    color: #f2f3e8;
+    padding: 2px 20px 20px 20px;
+    width: calc(100vw - 40px);
+    margin: 0 calc(50% - 50vw);
+}
+footer p{
+    padding-top: 1em;
+    border-top: #f2f3e8 1px solid;
+}
+footer div.group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+footer a{
+    color: #f2f3e8;
+    font-size: 11pt;
+}
+footer div#ess a{
+    flex: auto;
+    text-align: center;
+    border-left: #f2f3e8 1px solid;
+}
+footer div#ess a.left{
+    border-left: none;
+}
+footer div.group-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+footer div.group-grid a{
+    white-space: nowrap;
+    justify-self: start;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
