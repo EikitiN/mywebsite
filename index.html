@@ -75,6 +75,23 @@
                     const date = new Date(Jsondata[x]["updatedAt"]);
                     const updateddate = date.toLocaleDateString('ja-JP');
 
+                    const response = await fetch(path);
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const htmlText = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(htmlText, 'text/html');
+                    const title = doc.querySelector('title')?.textContent || "";
+                    const description = doc.querySelector('meta[name="description"]')?.content || "";
+                    const scriptTag = doc.querySelector('script#page-meta');
+                    let metaData = {};
+                    if (scriptTag) {
+                        try {
+                            metaData = JSON.parse(scriptTag.textContent);
+                        } catch (e) {
+                            console.error("JSONのパースに失敗しました", e);
+                        }
+                    }
+
                     const addition = `
                     <a href="https://example.com" class="a-nodesign"><div class="latest-content">
                         <div class="latest-content-date">2026/11/07</div>
