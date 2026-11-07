@@ -7,6 +7,10 @@ p{
     font-size: 13pt;
     line-height: 1.6;
 }
+a{
+    color: #1A1A1A;
+    text-decoration-style: dotted;
+}
 
 /*機能*/
 .topic{

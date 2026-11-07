@@ -1,0 +1,59 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ] # mainブランチにプッシュされたときに実行（環境に合わせて master などに変更してください）
+
+# このワークフローがGitHub Pagesへのデプロイ権限を持つように設定
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時に複数のデプロイが走らないようにする設定
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. リポジトリのコードをチェックアウト
+      # ※ Gitのコミット日時を取得するため fetch-depth: 0 が必須です
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. Node.js環境のセットアップ（スクリプトを実行するため）
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3. HTMLファイルの更新日時リスト（file-list.json）を生成するスクリプトを実行
+      - name: Generate file list JSON
+        run: node generate-json.js
+
+      # 4. GitHub Pages用の設定を行う
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # 5. 公開するディレクトリをアップロード用アーティファクトとしてまとめる
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # リポジトリのルート全体を公開する場合。もし公開フォルダが 'docs' なら './docs' に変更してください
+
+  # デプロイジョブ
+  deploy:
+    environment:
+      name: github-pages
+      name_url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
