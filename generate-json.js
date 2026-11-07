@@ -9,7 +9,7 @@ const results = [];
 // 除外したいファイル名やフォルダ名のリスト
 // ==========================================
 const excludeFiles = ['footer.html', 'header.html']; // ここに除外したいファイル名を追加できます
-const excludeDirs = ['.git', 'node_modules', '_templates']; // 除外したいフォルダがある場合
+const excludeDirs = ['.git', 'node_modules', '_templates', 'モデル']; // 除外したいフォルダがある場合
 
 function scanDir(dir) {
   const files = fs.readdirSync(dir);
