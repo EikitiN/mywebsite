@@ -2,14 +2,20 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const targetDir = path.join(__dirname); // 必要に応じて公開ディレクトリ（docsなど）に変更
+const targetDir = path.join(__dirname); 
 const results = [];
+
+// ==========================================
+// 除外したいファイル名やフォルダ名のリスト
+// ==========================================
+const excludeFiles = ['footer.html', 'header.html']; // ここに除外したいファイル名を追加できます
+const excludeDirs = ['.git', 'node_modules', '_templates']; // 除外したいフォルダがある場合
 
 function scanDir(dir) {
   const files = fs.readdirSync(dir);
   for (const file of files) {
-    // node_modulesや .git などは除外
-    if (file.startsWith('.') || file === 'node_modules') continue;
+    // 1. 隠しファイル（.で始まるもの）や除外ディレクトリのチェック
+    if (file.startsWith('.') || excludeDirs.includes(file)) continue;
 
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
@@ -17,6 +23,13 @@ function scanDir(dir) {
     if (stat.isDirectory()) {
       scanDir(fullPath);
     } else if (file.endsWith('.html')) {
+      
+      // 2. 除外ファイルリストに含まれているかチェック
+      if (excludeFiles.includes(file)) {
+        console.log(`除外されました: ${file}`);
+        continue; // リストに追加せずに次のループへ
+      }
+
       // 相対パスを算出
       const relativePath = path.relative(targetDir, fullPath).replace(/\\/g, '/');
       
