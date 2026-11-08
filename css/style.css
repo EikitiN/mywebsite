@@ -13,9 +13,6 @@ h2{
 h1{
     font-size: 18pt;
 }
-h1.title{
-    word-break: keep-all;
-}
 p{
     font-size: 13pt;
     line-height: 1.6;
@@ -58,6 +55,51 @@ a.a-nodesign{
     color: #1A1A1A;
 }
 
+/*ヘッダー*/
+header div.border-bottom{
+    border-bottom: #1A1A1A solid 1px;
+    padding-bottom: 0.5em;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(8px + 50% - 50vw);
+}
+div.header{
+    display: grid;
+    grid-template-columns: 1fr minmax(0, max-content) 1fr;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+h1.title{
+    word-break: keep-all;
+    min-width: 0;
+    justify-self: center;
+    margin-bottom: 3px;
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: stretch;
+}
+img#home-icon{
+    height: 32pt;
+    border: #1a1a1a solid 2px;
+    border-radius: 5px;
+    margin-top: 1em;
+}
+p.header-date{
+    color: #666;
+    margin: 0;
+    font-size: 10.5pt;
+    line-height: 1.1;
+    letter-spacing: 0;
+}
+div.header-date{
+    width: 9em;
+    margin-left: auto;
+    grid-row: 2;
+    justify-self: end;
+    margin-right: calc(50% - 48vw);
+}
+
+/*フッター*/
 div#footer-container{
     margin: 30px 0 0 0;
 }

@@ -8,6 +8,7 @@
     color: #666;
     font-size: 12.5pt;
     width: 6.5em;
+    flex-shrink: 0;
 }
 .latest-content-content{
     font-size: 12pt;

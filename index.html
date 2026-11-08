@@ -30,12 +30,13 @@
             "summary": "トップページ・サイト全体のトップページです",
             "category": "トップページ",
             "tags": ["index", "mainpage", "toppage"],
-            "created": "2026/11/8"
+            "created": "2026/11/8",
+            "top-title": "エイキチのウェブサイトへ<wbr>ようこそ"
         }
     </script>
 </head>
 <body>
-    <h1 class="center title">えいきちのウェブサイトへ<wbr>ようこそ</h1>
+    <div id="header-container"></div>
     <p>以前はfc2で公開していましたが、管理がめんどくさかった、スタイルがダサかったため一から作り直しています。
         プログラミング(HTML/JavaScript)の練習もかねて
     </p>
@@ -57,7 +58,7 @@
                 
                 // レスポンスが正常か確認する
                 if (!response.ok) {
-                throw new Error(`HTTPエラー! ステータス: ${response.status}`);
+                    throw new Error(`HTTPエラー! ステータス: ${response.status}`);
                 }
 
                 //表示処理
@@ -101,6 +102,7 @@
                 container.innerHTML = HtmlParts.join('');
             } catch (error) {
                 console.error('データの取得に失敗しました:', error);
+                container.innerHTML = `<h2 class="topic-title">新規更新ページ</h2><p>情報を読み込めませんでした</p>`;
             }
         })();
 
