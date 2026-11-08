@@ -1,8 +1,12 @@
 body{
-    padding: 0 2%;
-    margin: 0 8px;
+    margin: 0;
+    padding: 0;
     background-color: #f2f3e8;
     color: #202020;
+}
+div.main#main{
+    padding: 0 2%;
+    margin: 0 8px;
 }
 h3{
     font-size: 14pt;
@@ -59,15 +63,16 @@ a.a-nodesign{
 header div.border-bottom{
     border-bottom: #1A1A1A solid 1px;
     padding-bottom: 0.5em;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(8px + 50% - 50vw);
+    margin-left: calc(50% - 50dvw);
+    width: 100dwv;
 }
 div.header{
     display: grid;
     grid-template-columns: 1fr minmax(0, max-content) 1fr;
     align-items: center;
-    width: 100%;
+    /*width: 95%;*/
     box-sizing: border-box;
+    margin: 0 5%;
 }
 h1.title{
     word-break: keep-all;
@@ -96,7 +101,7 @@ div.header-date{
     margin-left: auto;
     grid-row: 2;
     justify-self: end;
-    margin-right: calc(50% - 48vw);
+    /*margin-right: calc(50% - 50dvw);*/
 }
 
 /*フッター*/
@@ -107,8 +112,8 @@ footer{
     background-color: #222;
     color: #f2f3e8;
     padding: 2px 20px 20px 20px;
-    width: calc(100vw - 48px);
-    margin: 0 calc(50% - 50vw);
+    /*width: calc(100dvw - 50px);
+    margin: 0 calc(50% - 50dvw);*/
 }
 footer p{
     padding-top: 1em;
