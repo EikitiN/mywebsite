@@ -67,7 +67,7 @@
                 Jsondata.sort((a, b) => b.updatedAt - a.updatedAt);
                 
                 const HtmlParts = [`<h2 class="topic-title">新規更新ページ</h2>`];
-                for (let x = 0; x < 5; x++) {
+                for (let x = 0; x < Math.min(5, Jsondata.length); x++) {
                     const path = `https://eikitin.github.io/mywebsite/${Jsondata[x]["path"]}`;
                     const date = new Date(Jsondata[x]["updatedAt"]);
                     const updateddate = date.toLocaleDateString('ja-JP');
