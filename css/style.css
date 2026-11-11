@@ -146,3 +146,22 @@ footer div.group-grid a{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/*アコーディオン*/
+details{
+    margin: 0.5em 0;
+    padding-left: 2em;
+}
+details>summary{
+    margin-left: -2em;
+}
+div.outest-tree{
+    margin-bottom: 2em;
+}
+details summary h3{
+    display: inline;
+}
+details p{
+    line-height: 1.1;
+    margin: 0.25em 0;
+}
