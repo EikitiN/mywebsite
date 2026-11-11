@@ -3,5 +3,10 @@
         "path": "0.html",
         "name": "modelfile",
         "tags": ["test", "model"]
+    },
+    {
+        "path": "1.html",
+        "name": "css読み込み状況の確認について",
+        "tags": ["css", "html", "web", "静的web開発", "web開発", "開発", "js", "JavaScript"]
     }
 ]

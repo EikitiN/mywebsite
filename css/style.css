@@ -165,3 +165,6 @@ details p{
     line-height: 1.1;
     margin: 0.25em 0;
 }
+details a p{
+    display: inline;
+}
