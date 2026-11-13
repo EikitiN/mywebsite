@@ -31,7 +31,8 @@
             "category": "備忘録",
             "tags": ["note"],
             "created": "2026/11/12",
-            "top-title": "備忘録: <wbr>CSS読み込み状況の<wbr>確認について"
+            "top-title": "備忘録: <wbr>CSS読み込み状況の<wbr>確認について",
+            "back-category": "../"
         }
     </script>
 </head>
@@ -45,40 +46,43 @@
         <p>&lt;/body&gt;直前に現在読み込んでいるcssを書き出し表示するプログラムを追加する。</p>
         <p>体裁はあとで整える</p>
         <p>実際にこのページで利用してみている。一番下を参照</p>
-        <pre><code>
-    &lt;div id="debug-css-output"&gt;&lt;/div&gt;
-    &lt;script&gt;
-        window.addEventListener('load', function() {
-        const output = document.getElementById('debug-css-output');
-        output.style.whiteSpace = 'pre-wrap';
-        output.style.fontFamily = 'monospace';
-        output.style.backgroundColor = '#f9f9f9';
-        output.style.padding = '15px';
-        output.style.borderRadius = '6px';
-        output.style.border = '1px solid #ddd';
+        <div class="code">
+            <button class="copy" id="code-copy1">コピー</button>
+            <pre><code>
+&lt;div id="debug-css-output"&gt;&lt;/div&gt;
+&lt;script&gt;
+    window.addEventListener('load', function() {
+    const output = document.getElementById('debug-css-output');
+    output.style.whiteSpace = 'pre-wrap';
+    output.style.fontFamily = 'monospace';
+    output.style.backgroundColor = '#f9f9f9';
+    output.style.padding = '15px';
+    output.style.borderRadius = '6px';
+    output.style.border = '1px solid #ddd';
 
-        let result = '';
+    let result = '';
 
-        for (let i = 0; i &lt; document.styleSheets.length; i++) {
-            const sheet = document.styleSheets[i];
-            if (sheet.href && sheet.href.includes('style.css')) {
-                result += 'ファイルURL: ' + sheet.href + '\n';
-                result += '----------------------------------------\n';
-                try {
-                    const rules = sheet.cssRules || sheet.rules;
-                    for (let j = 0; j &lt; rules.length; j++) {
-                        result += '  ' + rules[j].cssText + '\n';
-                    }
-                } catch (e) {
-                    result += 'エラー: ' + e + '\n';
+    for (let i = 0; i &lt; document.styleSheets.length; i++) {
+        const sheet = document.styleSheets[i];
+        if (sheet.href && sheet.href.includes('style.css')) {
+            result += 'ファイルURL: ' + sheet.href + '\n';
+            result += '----------------------------------------\n';
+            try {
+                const rules = sheet.cssRules || sheet.rules;
+                for (let j = 0; j &lt; rules.length; j++) {
+                    result += '  ' + rules[j].cssText + '\n';
                 }
-                result += '\n';
+            } catch (e) {
+                result += 'エラー: ' + e + '\n';
             }
+            result += '\n';
         }
-        output.textContent = result || 'CSSが見つかりませんでした。';
-    });
+    }
+    output.textContent = result || 'CSSが見つかりませんでした。';
+});
     &lt;/script&gt;
-        </code></pre>
+            </code></pre>
+        </div>
     </div>
     <div id="footer-container"></div>
 

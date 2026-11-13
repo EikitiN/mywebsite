@@ -38,6 +38,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         const updateddate = date.toLocaleDateString('ja-JP');
         doc.getElementById('modified').textContent = updateddate;
 
+        //カテゴリートップへのボタン設置
+        const category_path = metaData["back-category"] || "";
+        if (category_path) {
+            doc.getElementById('icon').classList.add('category-icon-disp');
+            doc.getElementById('category-top-a').href = category_path;
+        }
+
         document.getElementById('header-container').appendChild(doc.querySelector('header'));
     } catch (error) {
         console.error(error);

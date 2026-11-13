@@ -83,11 +83,26 @@ h1.title{
     grid-template-rows: auto auto;
     justify-items: stretch;
 }
-img#home-icon{
+img.header-backbutton{
     height: 32pt;
     border: #1a1a1a solid 2px;
     border-radius: 5px;
     margin-top: 1em;
+}
+img.header-backbutton#category-top{
+    display: none;
+}
+header div#icon.category-icon-disp img{
+    display: inline;
+    height: 28pt;
+}
+header div#icon.category-icon-disp img#category-top{
+    margin-top: 0;
+}
+header div#icon.category-icon-disp{
+    display: flex;
+    flex-direction: column;
+    gap: 0.1pt;
 }
 p.header-date{
     color: #666;
@@ -167,4 +182,22 @@ details p{
 }
 details a p{
     display: inline;
+}
+
+/*コード*/
+div.code{
+    background-color: #333;
+    color: #fff;
+    font-family: "monospace";
+}
+div.code pre{
+    padding: 15px;
+    overflow-x: auto;
+    white-space: pre;
+    scrollbar-color: #555 #1a1a1a;
+}
+div.code copy{
+    margin-right: auto;
+    background-color: none;
+    border: none;
 }
