@@ -67,3 +67,42 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error(error);
     }
 });
+
+/*コードのコピー*/
+/*
+<div class="code">
+    <div class="button"><button type="button" class="copy" id="code-copy1">コピー</button></div>
+    <pre><code id="code1">
+        コード
+    </code></pre>
+</div>
+の形式を採用
+*/
+(() => {
+    let i = 1;
+    while (true) {
+        let timerID;
+        const button = document.getElementById(`code-copy${String(i)}`);
+        if (!button) break;
+        const codeElm = document.getElementById(`code${String(i)}`);
+        const codeText = codeElm.textContent;
+        button.addEventListener('click', () => {
+            navigator.clipboard.writeText(codeText)
+                .then(() => {
+                    button.textContent = "コピーしました";
+                    timerID = setTimeout(() => {
+                        button.textContent = "コピー";
+                        timerID = null;
+                    }, 2000);
+                }).catch(err => {
+                    button.textContent = "コピーに失敗しました";
+                    console.error(err)
+                    timerID = setTimeout(() => {
+                        button.textContent = "コピー";
+                        timerID = null;
+                    }, 2000);
+                });
+        });
+        i++;
+    }
+})();

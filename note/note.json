@@ -2,11 +2,19 @@
     {
         "path": "0.html",
         "name": "modelfile",
-        "tags": ["test", "model"]
+        "tags": ["test", "model"],
+        "created": 20261111
     },
     {
         "path": "1.html",
         "name": "css読み込み状況の確認について",
-        "tags": ["css", "html", "web", "静的web開発", "web開発", "開発", "js", "JavaScript"]
+        "tags": ["css", "html", "web", "静的web開発", "web開発", "開発", "js", "JavaScript"],
+        "created": 20261112
+    },
+    {
+        "path": "2.html",
+        "name": "厚い段ボール切断",
+        "tags": ["工作", "段ボール", "カッター"],
+        "created": 20261115
     }
 ]
