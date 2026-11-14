@@ -49,7 +49,7 @@
             </details>
             <details>
                 <summary><h3>工作</h3></summary>
-                <a href="/mywebsite/"><p>厚い段ボールの切り方</p></a>
+                <a href="note-HTML/2.html"><p>厚い段ボールの切り方</p></a>
             </details>
         </div>
         <div class="topic" id="latest">
@@ -63,7 +63,50 @@
 
     <script src="/mywebsite/JavaScript/AllPages.js"></script>
     <script>
+        (async () => {
+            const container = document.getElementById("latest");
+            try {
+                const response = await fetch('https://eikitin.github.io/mywebsite/note/note.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTPエラー! ステータス: ${response.status}`);
+                }
+
+                //表示処理
+                const Jsondata = await response.json();
+                Jsondata.sort((a, b) => b.created - a.created);
+                
+                const HtmlParts = [`<h2 class="topic-title">新規追加備忘録</h2>`];
+                for (let x = 0; x < Math.min(5, Jsondata.length); x++) {
+                    if (Jsondata[x]["path"] == "0.html") continue;
+                    const path = `note-HTML/${Jsondata[x]["path"]}`;
+                    const title = Jsondata[x]["name"];
+
+                    const created = Jsondata[x]["created"];
+                    const yyyy = Math.floor(created / 10000);
+                    const mm = Math.floor((created - (yyyy * 10000)) / 100);
+                    const dd = Math.floor(created - (yyyy * 10000) - (mm * 100));
+
+                    const tags = Jsondata[x]["tags"].slice(0, 3).join(', ');
+
+                    const addition = `
+                    <a href="${path}" class="a-nodesign"><div class="latest-content">
+                        <div class="latest-content-date">${yyyy}/${mm}/${dd}</div>
+                        <div class="latest-content-content">
+                            <div>${title}</div>
+                            <div class="category">タグ: ${tags}</div>
+                        </div>
+                    </div></a>
+                    `;
+                    HtmlParts.push(addition);
+                }
+                container.innerHTML = HtmlParts.join('');
+            } catch (error) {
+                console.error('データの取得に失敗しました:', error);
+                container.innerHTML = `<h2 class="topic-title">新規追加備忘録</h2><p>情報を読み込めませんでした</p>`;
+            }
         
+        })();
     </script>
 </body>
 </html>
