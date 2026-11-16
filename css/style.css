@@ -38,6 +38,12 @@ a.a-nodesign{
 .disp-none{
     display: none;
 }
+code{
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0.1em 0.25em;
+}
 
 /*機能*/
 .topic{

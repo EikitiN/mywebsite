@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5H5H7H3T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/mywebsite/root-files/favicon.png">
+    <link rel="stylesheet" href="/mywebsite/css/style.css">
+    <link rel="stylesheet" href="css/substyle.css">
+    <link rel="apple-touch-icon" href="/mywebsite/root-files/favicon.png">
+
+    <meta property="og:prefix" content="og: https://ogp.me/ns#">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://eikitin.github.io/mywebsite/root-files/placeholder-image.png">
+    <meta property="og:site_name" content="えいきちのウェブサイト">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ussdr_uesdr">
+
+    <meta property="og:url" content="https://eikitin.github.io/mywebsite/note/note-HTML/3.html">
+    <meta property="og:description" content="簡易検索機能">
+    <meta property="og:title" content="検索機能実装-構想編">
+    <title>備忘録: 検索機能実装-構想編</title>
+    <script type="application/json" id="page-meta">
+        {
+            "summary": "jsで動く、フロントエンド検索機能の実装。その1: 実装の構想まとめ",
+            "category": "備忘録",
+            "tags": ["note", "js", "検索", "機能", "JavaScript"],
+            "created": "2026/11/16",
+            "top-title": "備忘録: <wbr>検索機能実装-<wbr>構想編",
+            "back-category": "../"
+        }
+    </script>
+</head>
+<body>
+    <div id="header-container"></div>
+    <div class="main" id="main">
+        <p>
+            サイト全体や少なくとも備忘録にはキーワード検索機能を付けたいが、このウェブサイトのコンセプトとして、あまり外部ツールを使わないということを掲げている。
+            では、AIに聞いてみよう。便利なものを使うことに違和感はないが、それを完成品としてしまうのは少しもったいない。
+            AIに聞くと、やはり自前でやるなら対応表を作るしかない、と。
+        </p>
+        <h3>アルゴリズム(案)</h3>
+        <p>
+            基本的な方針は、html文書中の連続する文字列の長さとその出現回数、出現位置に応じてスコアを割り振り、それらの合計で内容との適合度を測ることであろう。
+            そもそも、ものを書く人間は、変な論説文とかではなければ、タイトルとか、概要に重要な情報をまとめるだろう。
+            タイトル、メタタグのsummary, tagsは必要なキーワードが入っている確率が高い。
+            ではそのまま実装した時のことを考えよう。きっと「を」がほとんどのページで最も重要な情報になってしまうだろう。
+            助詞は除外しないと。
+        </p>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="/mywebsite/JavaScript/AllPages.js"></script>
+</body>
+</html>

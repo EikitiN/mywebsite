@@ -43,13 +43,14 @@
         <p>webページ作成中、cssを変更したが、テスト環境において変更が見られない。</p>
         <p>テスト環境がスマートフォンで、開発者ツールで確認できない</p>
         <h2>解決手段</h2>
-        <p>&lt;/body&gt;直前に現在読み込んでいるcssを書き出し表示するプログラムを追加する。</p>
-        <p>体裁はあとで整える</p>
+        <p><code>&lt;/body&gt;</code>直前に現在読み込んでいるcssを書き出し表示するプログラムを追加する。</p>
+        <p>何度も何度もリロードして、結局cssのクラス名とid名をごっちゃにしてた、なんてパターンもある。
+            逆に、そういうところを何度も何度も探していたけど、結局は読み込んでいたのが最新版じゃなかった、なんてオチも。
+        </p>
         <p>実際にこのページで利用してみている。一番下を参照</p>
         <div class="code">
             <div class="button"><button type="button" class="copy" id="code-copy1">コピー</button></div>
-            <pre><code id="code1">
-&lt;div id="debug-css-output"&gt;&lt;/div&gt;
+            <pre><code id="code1">&lt;div id="debug-css-output"&gt;&lt;/div&gt;
 &lt;script&gt;
     window.addEventListener('load', function() {
     const output = document.getElementById('debug-css-output');
