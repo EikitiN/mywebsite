@@ -186,6 +186,10 @@ details p{
     line-height: 1.1;
     margin: 0.25em 0;
 }
+details a{
+    display: block;
+    width: fit-content;
+}
 details a p{
     display: inline;
 }
