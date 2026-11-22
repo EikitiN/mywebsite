@@ -38,7 +38,7 @@ pattern = f"([{re.escape(''.join(breakmarks))}]+)"
 
 def make_2_gram(text: str) -> list[str]:
     normalized_NFKC = unicodedata.normalize("NFKC", text)
-    chunks = [c for c in re.split(pattern, text) if c]
+    chunks = [c for c in re.split(pattern, normalized_NFKC) if c]
 
     bigrams = []
     for chunk in chunks:
@@ -188,7 +188,7 @@ def main():
         '''
         pre_results.append(
             {
-                "path": str(html_file),
+                "path": html_file.as_posix(),
                 "title": meta["title"],
                 "character_count": character_count,
                 "bigrams": [(x, place_weight["title"]*type_weight_calc(x)) for x in title_bigram] + [(x, place_weight["tags"]*type_weight_calc(x)) for x in tags_bigram] + [(x, place_weight["summary"]*type_weight_calc(x)) for x in summary_bigram] + [(x, place_weight["body"]*type_weight_calc(x)) for x in body_bigram]
