@@ -37,7 +37,7 @@ PAD2 = "\uE000\uE000"
 pattern = f"([{re.escape(''.join(breakmarks))}]+)"
 
 def make_2_gram(text: str) -> list[str]:
-    normalized_NFKC = unicodedata.normalize("NFKC", text)
+    normalized_NFKC = unicodedata.normalize("NFKC", text).lower()
     chunks = [c for c in re.split(pattern, normalized_NFKC) if c]
 
     bigrams = []
