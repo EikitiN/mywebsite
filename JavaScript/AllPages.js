@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const category_path = metaData["back-category"] || "";
         if (category_path) {
             doc.getElementById('icon').classList.add('category-icon-disp');
+            doc.getElementById('search-div').classList.add('category-icon-disp');
             doc.getElementById('category-top-a').href = category_path;
         }
 
