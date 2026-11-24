@@ -176,7 +176,7 @@ def main():
         body_bigram = make_2_gram(html_body)
         character_count += len(body_bigram)
 
-        counters.update(set(title_bigram + tags_bigram + body_bigram))
+        counters.update(set(title_bigram + summary_bigram + tags_bigram + body_bigram))
 
         '''
         pre_bigrams[str(html_file)] = {

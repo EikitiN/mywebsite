@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/mywebsite/root-files/favicon.png">
+    <link rel="stylesheet" href="/mywebsite/css/style.css">
+    <link rel="stylesheet" href="css/substyle.css">
+    <link rel="apple-touch-icon" href="/mywebsite/root-files/favicon.png">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Pythonのリスト内包表記を理解する</title>
+    <script type="application/json" id="page-meta">
+        {
+            "summary": "Pythonのリスト内包表記の基本構文と、for文との使い分けを具体例で解説する。",
+            "category": "プログラミング",
+            "tags": ["Python", "リスト内包表記", "入門", "コード"],
+            "created": "2026/11/25",
+            "top-title": "Pythonリスト内包表記",
+            "back-category": "../"
+        }
+    </script>
+    <style></style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <div class="main" id="main">
+        <h1>Pythonのリスト内包表記を理解する</h1>
+        <p>Pythonにはリスト内包表記（list comprehension）という、リストを簡潔に生成する構文がある。慣れると手放せなくなる一方、初見では読みにくいと感じる人も多い。基本形は次のとおりだ。</p>
+        <p><code>[式 for 変数 in イテラブル]</code></p>
+        <p>たとえば0から9までの2乗のリストを作るなら、for文では空リストにappendを繰り返すが、内包表記なら <code>[x**2 for x in range(10)]</code> の一行で済む。可読性が上がり、実行速度もわずかに有利なことが多い。</p>
+        <p>条件を付けたい場合は末尾にifを置く。<code>[x for x in range(20) if x % 2 == 0]</code> で偶数だけを抽出できる。ifとelseを両方使う場合は式の側に書く。<code>["偶数" if x % 2 == 0 else "奇数" for x in range(10)]</code> のように、条件分岐の位置が変わる点に注意したい。</p>
+        <p>入れ子のループも内包表記で書ける。<code>[(i, j) for i in range(3) for j in range(3)]</code> は9組のタプルを生成する。ただし入れ子が深くなると読みにくくなるため、可読性を優先するなら通常のfor文に戻す判断も必要だ。</p>
+        <p>内包表記はリストだけでなく、辞書（dict comprehension）や集合（set comprehension）、ジェネレータ式でも使える。<code>{k: v for k, v in pairs}</code> のように書けば辞書を生成できる。ジェネレータ式は <code>(x for x in range(10))</code> と丸括弧で書き、メモリを節約したい場面で役立つ。</p>
+        <p>注意点として、副作用を目的とした処理を内包表記で書くのは避けたい。あくまで「値を作る」ための構文であり、printやファイル書き込みなどを詰め込むと意図が伝わりにくくなる。簡潔さと読みやすさのバランスを意識して使うのがよい。</p>
+    </div>
+    <div id="footer-container"></div>
+    <script src="/mywebsite/JavaScript/AllPages.js"></script>
+</body>
+</html>
