@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/mywebsite/root-files/favicon.png">
+    <link rel="stylesheet" href="/mywebsite/css/style.css">
+    <link rel="stylesheet" href="css/substyle.css">
+    <link rel="apple-touch-icon" href="/mywebsite/root-files/favicon.png">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>WSL2環境からのクロスコンパイルと静的リンクの備忘録</title>
+    <script type="application/json" id="page-meta">
+        {
+            "summary": "Windows上のWSL2(Ubuntu)から異なるアーキテクチャやOS向けにC++バイナリをビルドする際の手順と注意点。",
+            "category": "プログラミング",
+            "tags": ["C++", "WSL2", "Boost", "Linux", "ビルド"],
+            "created": "2026/11/25",
+            "top-title": "WSL2からの<wbr>クロスコンパイル備忘録",
+            "back-category": "../"
+        }
+    </script>
+    <style></style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <div class="main" id="main">
+        <p><em>検索機能のテスト用ページで、AIによって作成された文章です。</em></p>
+        <h1>WSL2環境からのクロスコンパイルと静的リンクの備忘録</h1>
+        <p>C++で記述したCLIツールを複数の環境（Windows、Linux、ChromeOS上のLinuxコンテナなど）で配布する場合、実行環境側の共有ライブラリ（glibcやBoostの.soファイル）のバージョン差異によるエラーが頻発する。</p>
+        <h2>静的リンク（Static Linking）の活用</h2>
+        <p>依存ライブラリを実行ファイル内部に埋め込むことで、配布先での環境構築の手間を省くことができる。CMakeを利用している場合は、ターゲットに対して以下のオプションを指定する。</p>
+        <pre><code>set(Boost_USE_STATIC_LIBS ON)
+target_link_libraries(my_app PRIVATE Boost::filesystem Boost::program_options)</code></pre>
+        <p>また、MinGW-w64ツールチェーンを導入すれば、Ubuntu上からWindows向けの <code>.exe</code> バイナリを直接生成することも可能である。</p>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="/mywebsite/JavaScript/AllPages.js"></script>
+</body>
+</html>

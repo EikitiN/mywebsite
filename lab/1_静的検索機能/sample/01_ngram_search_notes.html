@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/mywebsite/root-files/favicon.png">
+    <link rel="stylesheet" href="/mywebsite/css/style.css">
+    <link rel="stylesheet" href="css/substyle.css">
+    <link rel="apple-touch-icon" href="/mywebsite/root-files/favicon.png">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>静的サイト向けN-gram検索エンジンの設計メモ</title>
+    <script type="application/json" id="page-meta">
+        {
+            "summary": "辞書を使わずに1-gramと2-gramを組み合わせて静的サイトの全文検索を実現する際のスコアリング手法のメモ。",
+            "category": "技術メモ",
+            "tags": ["Python", "検索エンジン", "N-gram", "アルゴリズム"],
+            "created": "2026/11/25",
+            "top-title": "静的サイト向け<wbr>N-gram検索エンジンの<wbr>設計メモ",
+            "back-category": "../"
+        }
+    </script>
+    <style></style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <div class="main" id="main">
+        <p><em>※このページは検索機能のテスト用ページで、AIによって作成された文章です。</em></p>
+        <h1>静的サイト向けN-gram検索エンジンの設計メモ</h1>
+        <p>形態素解析器や大規模な辞書データに依存せず、軽量なJSONインデックスだけで動作する静的検索システムを構築する場合、文字種ごとのN-gram分割が有効に機能する。</p>
+        <h2>文字種に応じた重み付け</h2>
+        <p>日本語と英語が混在するドキュメントでは、すべての文字を均一に扱うとノイズが増えやすい。そのため、以下のように文字種別でトークン化の方針を分ける。</p>
+        <ul>
+            <li><strong>漢字:</strong> 1文字でも意味を持つため、1-gramと2-gramの両方をインデックスに登録し、IDF値で希少性を評価する。</li>
+            <li><strong>カタカナ・英数字:</strong> 連続する文字列を単語ブロックとして抽出しつつ、部分一致に対応するため2-gramも併用する。</li>
+            <li><strong>ひらがな:</strong> 助詞や活用語尾によるノイズを防ぐため、単独の1-gramは重みを下げるか、2-gram以上を主軸とする。</li>
+        </ul>
+        <h2>近接ボーナスとクエリ網羅率</h2>
+        <p>単に単語が含まれているだけでなく、検索クエリ内の複数トークンが文書内で近い位置に出現している場合（フレーズ近接）にスコアを加算することで、検索意図に合致したページを上位に表示できる。</p>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="/mywebsite/JavaScript/AllPages.js"></script>
+</body>
+</html>

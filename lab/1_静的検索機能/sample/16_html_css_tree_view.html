@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/mywebsite/root-files/favicon.png">
+    <link rel="stylesheet" href="/mywebsite/css/style.css">
+    <link rel="stylesheet" href="css/substyle.css">
+    <link rel="apple-touch-icon" href="/mywebsite/root-files/favicon.png">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>JavaScriptを使わずにHTMLとCSSだけで階層ツリーを作る</title>
+    <script type="application/json" id="page-meta">
+        {
+            "summary": "details要素とsummary要素、およびCSSの疑似要素(::before, ::after)を活用した軽量な折りたたみツリーの実装。",
+            "category": "フロントエンド",
+            "tags": ["HTML5", "CSS", "UIデザイン", "アクセシビリティ"],
+            "created": "2026/11/25",
+            "top-title": "HTMLとCSSだけで<wbr>階層ツリーを作る",
+            "back-category": "../"
+        }
+    </script>
+    <style></style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <div class="main" id="main">
+        <h1>JavaScriptを使わずにHTMLとCSSだけで階層ツリーを作る</h1>
+        <p>サイトのサイトマップやカテゴリ一覧を階層構造（ツリービュー）で表示したい場合、重厚なUIライブラリを導入しなくても、HTML5標準の <code>&lt;details&gt;</code> と <code>&lt;summary&gt;</code> タグを組み合わせるだけで開閉可能なツリーを実装できる。</p>
+        <h2>罫線（ガイドライン）の描画</h2>
+        <p>ネストされた <code>&lt;ul&gt;</code> 要素の左側に <code>border-left</code> を設定し、各 <code>&lt;li&gt;</code> 要素の <code>::before</code> 疑似要素で横線を引くことで、エクスプローラーのような視覚的な接続線を純粋なCSSのみで表現できる。キーボード操作やスクリーンリーダーにも標準で対応できる点が大きな利点である。</p>
+        <p><em>※この文章は検索機能のテスト用ページで、AIによって作成された文章です。</em></p>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="/mywebsite/JavaScript/AllPages.js"></script>
+</body>
+</html>
