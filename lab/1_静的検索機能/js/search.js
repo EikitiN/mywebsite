@@ -8,11 +8,12 @@ const breakmarks = new Set([
 ]);
 const PAD = "\uE000";
 const PAD2 = "\uE000\uE000";
-//パラメーター
-
+const url = new URLSearchParams(window.location.search);
+const devmode = url.has('dev');
 
 const GoButton = document.getElementById('go');
 const search_input = document.getElementById('keywords');
+const output_div = document.getElementById('output');
 
 //初期処理
 GoButton.disabled = true;
@@ -42,7 +43,7 @@ const nomalizer = (text) => { //index側と同じbigramにする
         seen.add(item);
         return true;
     });
-    console.log(chunks);
+    //console.log(chunks);
 
     const bigram = [];
     const bigrams = [];
@@ -118,12 +119,11 @@ const query_scorer = (page_bigrams, query_bigram, character_count) => {
 }
 
 const search = async () => {
-    //console.log(SearchIndexJson);
+    const starttime = Date.now();
     //検索クエリ取得
     const query = search_input.value;
     if (!query) return 0;
     const query_bigrams = nomalizer(query);
-    //console.log(query_bigrams);
 
     const scores = [];
     for (const index of SearchIndexJson) { //ページごとにスコアを算出
@@ -144,8 +144,24 @@ const search = async () => {
         }
         //検索クエリのうち、75%以上の合致度のあったクエリが全体の数の75%を超えたらさらにボーナス
         if (is_75_bonus / query_size >= 0.75) this_page["score"] *= 1.5;
-        console.log(this_page);
+        scores.push(this_page);
+        //console.log(this_page);
     }
+    //スコア順に並べて表示
+    scores.sort((a, b) => b.score - a.score);
+
+    const processingtime = Date.now() - starttime;
+
+    let output_text = "";
+    if (devmode) output_text += `<p>処理時間: ${processingtime} ms</p>`;
+    for (const one_result of scores) {
+        output_text += `<a href="/mywebsite/${one_result.path}"><p>${one_result.title}`;
+        if (devmode) {
+            output_text += ` | score: ${one_result.score}`;
+        }
+        output_text += `</p></a>`;
+    }
+    output_div.innerHTML = output_text;
 }
 
 GoButton.addEventListener('click', async () => {
