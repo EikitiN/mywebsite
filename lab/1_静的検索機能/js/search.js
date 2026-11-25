@@ -43,7 +43,93 @@ const nomalizer = (text) => { //index側と同じbigramにする
         seen.add(item);
         return true;
     });
-    //console.log(chunks);
+    console.log(chunks);
+    //1. 5文字以下の日本語キーワードの処理
+    //2. ひらがな、カタカナ、漢字、その他 の区切り位置で分割したものを生成
+    //3. ひらがなをカタカナにしたもの、カタカナを平仮名にしたものを生成
+    //↓
+    //うまくいかなかったから(スコアが低くなるだけ)、5文字以内の日本語ならひらがな、カタカナを入れ替えたものを追加
+    //3文字以内なら各文字に分割 に変更
+    //追加検証としてスコアを足し算するようにする＜ー明日
+    let put_into_chunks = [];
+    let japaneseRegex;
+    try {
+        japaneseRegex = new RegExp("[\\p{Script=Hiragana}\\p{Script=Katakana}\\p{Script=Han}]", "u");
+    } catch (e) {
+        japaneseRegex = /[ぁ-んァ-ヶー一-龠々ｦ-ﾟ]/;
+    }
+    for (const chunk of chunks) {
+        continue; //いったん機能をオフにしておく
+        if ([...breakmarks].some((char) => chunk.includes(char))) continue; //区切り文字だったらやらない
+        if ([...chunk].length >= 6) continue; //6文字以上だったらやらない
+        if (!japaneseRegex.test(chunk)) continue; //日本語じゃなかったらやらない
+        const swapped = chunk.replace(/[ぁ-ゖァ-ヶ]/g, (s) => {
+            const code = s.charCodeAt(0);
+            return String.fromCharCode(code >= 0x30A1 ? code - 0x60 : code + 0x60);
+        });
+        put_into_chunks.push(swapped);
+        /*
+        if ([...chunk].length >= 4) continue; //4文字以上だったらやらない
+        put_into_chunks.push(...[...chunk]);
+        */
+        /*
+        const getCharType = (char) => {
+            if (/[ぁ-ん]/.test(char)) return "hiragana";
+            if (/[ァ-ヶーｦ-ﾟ]/.test(char)) return "katakana";
+            if (/[一-龠々〆ヵヶ]/.test(char) || char.codePointAt(0) > 0xFFFF) return "kanji";
+            return "other";
+        };
+
+        const hiraToKana = (str) =>
+            str.replace(/[ぁ-ゖ]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0x60));
+
+        const kanaToHira = (str) =>
+            str.replace(/[ァ-ヶ]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0x60));
+
+        //文字種が変わる位置での切り替え
+        const splitParts = [];
+        let currentPart = "";
+        let prevType = null;
+
+        for (const char of chunk) {
+            const type = getCharType(char);
+            if (prevType !== null && type !== prevType) {
+            splitParts.push(currentPart);
+            currentPart = char;
+            } else {
+            currentPart += char;
+            }
+            prevType = type;
+        }
+        if (currentPart) splitParts.push(currentPart);
+
+        if (splitParts.length > 1) {
+            put_into_chunks.push(...splitParts);
+        }
+
+        //ひらがな、カタカナの処理
+        for (const part of splitParts) {
+            const type = getCharType([...part][0]);
+            if (type === "hiragana") {
+            put_into_chunks.push(hiraToKana(part));
+            } else if (type === "katakana") {
+            put_into_chunks.push(kanaToHira(part));
+            }
+        }
+        */
+    }
+    //put_into_chunksの重複削除
+    if (put_into_chunks.length > 0) {
+        const seen = new Set(chunks);
+        const cleaned_put_into_chunks = put_into_chunks.filter(item => {
+            if (item === " ") return true;
+            if (seen.has(item)) return false;
+            seen.add(item);
+            return true;
+        });
+        chunks.push(...cleaned_put_into_chunks);
+        console.log("追加: ", cleaned_put_into_chunks, chunks);
+    }
 
     const bigram = [];
     const bigrams = [];
@@ -150,6 +236,14 @@ const search = async () => {
     //スコア順に並べて表示
     scores.sort((a, b) => b.score - a.score);
 
+    //偏差値算出(普遍的な内容か、特化した内容化の判別) => 必要なさそうだから消す
+    const mean = scores.reduce((sum, item) => sum + item.score, 0) / scores.length;
+    const variance = scores.reduce((sum, item) => sum + (item.score - mean) ** 2, 0) / scores.length;
+    const stdDev = Math.sqrt(variance);
+    scores.forEach((s) => {
+        s.deviation = stdDev === 0 ? 50 : ((s.score - mean) / stdDev) * 10 + 50;
+    });
+
     const processingtime = Date.now() - starttime;
 
     let output_text = "";
@@ -157,7 +251,8 @@ const search = async () => {
     for (const one_result of scores) {
         output_text += `<a href="/mywebsite/${one_result.path}"><p>${one_result.title}`;
         if (devmode) {
-            output_text += ` | score: ${one_result.score}`;
+            output_text += ` | 偏差値: ${(one_result.deviation).toFixed(2)} | score: ${(one_result.score).toFixed(2)}`;
+            console.log(one_result.title, one_result.deviation, one_result.score);
         }
         output_text += `</p></a>`;
     }
