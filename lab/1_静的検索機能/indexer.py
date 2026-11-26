@@ -10,6 +10,7 @@ exclude_dirs = []
 #root = Path('./') #本番
 root = Path('./lab/1_静的検索機能')
 output_file = root / Path('search-index.json')
+output_file_for_one_char = root / Path('search-index-one-char.json')
 #全体スケール
 scale = 1
 place_weight = { #位置別重み付け
@@ -145,12 +146,14 @@ def main():
     '''
     counters = Counter() #各2-gramの登場するファイル数
     number_of_pages = 0
+    one_chars = Counter()
     #repeat each html
     for html_file in root.rglob("*.html"):
         if any(exclude_dir in html_file.parts for exclude_dir in exclude_dirs):
             continue
 
         print(f"Processing: {html_file}")
+        one_chars_in_page = set()
         number_of_pages += 1
         character_count = 0
         set_of_2gram = set() #各ファイルでの出現2-gram一覧
@@ -160,24 +163,28 @@ def main():
         meta = get_meta(soup)
         #メタデータの2-gram
         title_bigram = make_2_gram(re.sub(r"<wbr>", ",", meta["title"]))
+        one_chars_in_page.update(r"<wbr>", ",", meta["title"])
         character_count += len(title_bigram)
 
         tags_bigram = []
         if "tags" in meta["meta"]:
             tags_bigram = make_2_gram(','.join(meta["meta"]["tags"]))
+            one_chars_in_page.update(','.join(meta["meta"]["tags"]))
             character_count += len(tags_bigram)
         
         summary_bigram = []
         if "summary" in meta["meta"]:
             summary_bigram = make_2_gram(meta["meta"]["summary"])
+            one_chars_in_page.update(meta["meta"]["summary"])
             character_count += len(summary_bigram)
 
         html_body = HTML_remover(soup)
         body_bigram = make_2_gram(html_body)
+        one_chars_in_page.update(html_body)
         character_count += len(body_bigram)
 
         counters.update(set(title_bigram + summary_bigram + tags_bigram + body_bigram))
-
+        one_chars.update(one_chars_in_page)
         '''
         pre_bigrams[str(html_file)] = {
             "title": [(x, place_weight["title"]*type_weight_calc(x)) for x in title_bigram],
@@ -200,7 +207,13 @@ def main():
     IDEscores = {}
     for x in counters:
         p = counters[x] / number_of_pages
-        IDEscores[x] =  -3*p*p + 1 if p <= 0.5 else -0.3*p + 0.4
+        IDEscores[x] =  -20*p*p + 1 if p <= 0.2 else (1 - p) / (155*p - 27)
+        #旧版: -3*p*p + 1 if p <= 0.5 else -0.3*p + 0.4
+    #それぞれの文字に対応するIDEスコア
+    IDEscores_one = {}
+    for x in one_chars:
+        p = one_chars[x] / number_of_pages
+        IDEscores_one[x] = -20*p*p + 1 if p <= 0.2 else (1 - p) / (155*p - 27)
 
     #スコア計算・組み込み
     for pr in pre_results:
@@ -218,6 +231,8 @@ def main():
             r'[\1, \2]',
             json.dumps(results, ensure_ascii=False, indent=2)
         ))
+    with open(output_file_for_one_char, "w", encoding="utf-8") as f:
+        json.dump(IDEscores_one, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
     main()

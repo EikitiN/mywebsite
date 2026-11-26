@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5H5H7H3T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/mywebsite/root-files/favicon.png">
+    <link rel="stylesheet" href="/mywebsite/css/style.css">
+    <link rel="stylesheet" href="css/substyle.css">
+    <link rel="apple-touch-icon" href="/mywebsite/root-files/favicon.png">
+
+    <meta property="og:prefix" content="og: https://ogp.me/ns#">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://eikitin.github.io/mywebsite/root-files/placeholder-image.png">
+    <meta property="og:site_name" content="えいきちのウェブサイト">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ussdr_uesdr">
+
+    <meta property="og:url" content="https://eikitin.github.io/mywebsite/note/note-HTML/4.html">
+    <meta property="og:description" content="浮動小数点数を用いると思いもよらない偏差値が出る">
+    <meta property="og:title" content="備忘録">
+    <title>備忘録: 浮動小数点数と偏差値</title>
+    <script type="application/json" id="page-meta">
+        {
+            "summary": "浮動小数点数の誤差と偏差値についての備忘録",
+            "category": "備忘録",
+            "tags": ["note", "js", "計算", "浮動小数点数", "JavaScript", "小数", "誤差", "偏差値"],
+            "created": "2026/11/27",
+            "top-title": "備忘録: 浮動<wbr>小数点数と<wbr>偏差値<wbr>について",
+            "back-category": "../"
+        }
+    </script>
+</head>
+<body>
+    <div id="header-container"></div>
+    <div class="main" id="main">
+        <p>検索機能の作成の段階で、偏差値の算出を行っていた。全てのデータが同じ値を示しているのに、偏差値は40.00。
+            何かがおかしいため確かめる。
+        </p>
+        <p>そのとき使っていた式</p>
+        <div class="code">
+            <div class="button"><button type="button" class="copy" id="code-copy1">コピー</button></div>
+            <pre><code id="code1">
+const mean = scores.reduce((sum, item) => sum + item.score, 0) / scores.length;
+const variance = scores.reduce((sum, item) => sum + (item.score - mean) ** 2, 0) / scores.length;
+const stdDev = Math.sqrt(variance);
+console.log("");
+console.log("標準偏差: ", stdDev);
+scores.forEach((s) => {
+    s.deviation = stdDev === 0 ? 50 : ((s.score - mean) / stdDev) * 10 + 50;
+});</code></pre>
+        </div>
+        <div class="topic">
+            <h2 class="topic-title">そのときの様子の再現</h2>
+            <div id="output"><p>処理時間: 5 ms</p><a href="/mywebsite/lab/1_静的検索機能/index.html"><p>静的サイト向けの検索機能の実装案の試行 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/01_ngram_search_notes.html"><p>静的サイト向けN-gram検索エンジンの設計メモ | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/01_屋上菜園のはじめ方.html"><p>屋上菜園のはじめ方 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/02_short_memo_coffee.html"><p>今日のコーヒー豆メモ | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/02_図書館を使いこなす.html"><p>図書館を使いこなす | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/03_quantum_computing_intro.html"><p>量子ビットと重ね合わせの基礎概念 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/03_雨の日の防災チェック.html"><p>雨の日の防災チェック | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/04_english_static_web.html"><p>Building Zero-Backend Web Applications | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/04_コーヒーの味を記録する.html"><p>コーヒーの味を記録する | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/05_french_cuisine_guide.html"><p>Les bases de la cuisine française : Les sauces mères | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/05_星空観察の準備.html"><p>星空観察の準備 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/06_german_philosophy_kant.html"><p>Kants Kategorischer Imperativ kurz erklärt | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/06_ごみ分別の考え方.html"><p>ごみ分別の考え方 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/07_spanish_travel_kyoto.html"><p>Notas de viaje: Un paseo otoñal por Kioto | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/07_小さな博物館の企画展.html"><p>小さな博物館の企画展 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/08_korean_ramen_recipe.html"><p>집에서 만드는 간단한 미소 라멘 레시피 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/08_料理の段取りと科学.html"><p>料理の段取りと科学 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/09_chinese_tea_culture.html"><p>中国六大茶类的基本分类与冲泡要点 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/09_架空都市ミナト区の交通計画.html"><p>架空都市ミナト区の交通計画 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/10_chaos_math_physics_problem.html"><p>【演習問題】摩擦のある斜面上の単振動と化学反応の連成 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/10_パスワード管理の基本.html"><p>パスワード管理の基本 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/11_poison_toxicology_notes.html"><p>自然毒と化学兵器の作用機序に関する分類メモ | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/12_cpp_boost_cross_compile.html"><p>WSL2環境からのクロスコンパイルと静的リンクの備忘録 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/13_geogebra_analytical_art.html"><p>円と直線の方程式だけで描く幾何学アートの技法 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/14_latin_lorem_history.html"><p>De Finibus Bonorum et Malorum et Historia Lorem Ipsum | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/15_ultra_short_ping.html"><p>疎通確認用ダミー | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/16_html_css_tree_view.html"><p>JavaScriptを使わずにHTMLとCSSだけで階層ツリーを作る | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/blog.html"><p>ブログ：Web開発で大切なこと | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/faq.html"><p>よくある質問 - FAQ | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/guide.html"><p>利用ガイド - はじめての方へ | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/index.html"><p>さんぷるぅぅぅ - 会社紹介 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/news.html"><p>お知らせ - 株式会社さんぷるぅぅぅ | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/pc組み立て.html"><p>自作PC入門：パーツ選びから組み立てまで | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/python内包リスト.html"><p>Pythonのリスト内包表記を理解する | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/service.html"><p>サービス紹介 - さんぷるぅぅぅ | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/wifiルーター.html"><p>Wi-Fiルーター、いつ買い替える？ | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/京都の路地裏.html"><p>京都・路地裏散歩のすすめ | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/味噌ラーメン.html"><p>味噌ラーメンはこうして生まれた | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/家庭菜園.html"><p>家庭菜園の土づくり入門 | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/猫の行動.html"><p>猫の不思議な行動あれこれ | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/睡眠とスマホ.html"><p>寝る前のスマホは本当に悪いのか | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/確定申告.html"><p>はじめての確定申告ガイド | 偏差値: 40.00 | score: 0.20</p></a><a href="/mywebsite/lab/1_静的検索機能/sample/積読.html"><p>積読は悪ではない | 偏差値: 40.00 | score: 0.20</p></a></div>
+        </div>
+        <p>この時は、まだ検索結果に全ページが表示されるとき。この記事執筆時点では表示数抑制は未実装。</p>
+        <p>コンソールに標準偏差を表示すると</p>
+        <div class="code"><pre><code>
+標準偏差:  2.7755575615628914e-17</code></pre></div>
+        <p>であった。</p>
+        <h2>原因の探求</h2>
+        <p>
+            スコア、平均値、標準偏差などの値は浮動小数点数として扱われている。<br>
+            そして、このときスコアはすべて正確に<code>0.2</code>であった。
+            <code>0.2</code>は浮動小数点数で、JavaScriptではNumber型のため、IEEE 754 倍精度64ビット浮動小数点数で扱われている。<br>
+            これにおける0.2の表記は、
+        </p>
+        <p><span style="background-color: #cce;">0</span><span style="background-color: #beb;">01111111100</span><span style="background-color: #ecc;">1001100110011001100110011001100110011001100110011010</span></p>
+        <p>であり、これを10進数に直接計算すると<code>0.200000000000000011102230246251565404236316680908203125</code>であるように、やや誤差が生まれてしまう。</p>
+        <p>その後の計算の仮定でずれ、結果誤差が<code>2.7755575615628914e-17 = 2^-55</code>になってしまった</p>
+        <p>偏差値の計算式において、
+        平均値を計算する過程で合算していき、2^3 = 8ビット分平均値側の精度が落ちたと考えられる。<br>
+        スコア0.2 x 43項目で合計8.6、0.2が含まれる精度は0.125 ~ 0.25 (2^-3 ~ 2^-2)、
+        8.6が含まれる精度は8 ~ 16 (2^3 ~ 2^4)。それを要素数で割って、また精度が0.125 ~ 0.25 (2^-3 ~ 2^-2)に戻されたが、
+        仮数部の後ろ側は0パディングになってしまう。その結果、以下のように計算されたと考えられる</p>
+        <div class="code"><pre><code>
+DV = 偏差値(Deviation Value) | mean = 平均値 | SD = 標準偏差(Standard Deviation)
+DV = (value - mean) /  SD   * 10 + 50
+DV =     -2^-55     / 2^-55 * 10 + 50
+DV =     -2^-55     / 2^-55 * 10 + 50
+DV =     -1.0               * 10 + 50
+DV =     -10.0                   + 50
+DV =     40.0</code></pre></div>
+        <p>対策としては、検査を<code>stdDev === 0</code>ではなく<code>stdDev &lt; 1e-10</code>などとすること。
+            もしくは、そもそもの元データがすべて等しくなっているかをチェックすること。</p>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="/mywebsite/JavaScript/AllPages.js"></script>
+</body>
+</html>

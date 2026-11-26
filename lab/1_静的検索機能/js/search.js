@@ -20,9 +20,12 @@ GoButton.disabled = true;
 async function getJson() {
     const resp = await fetch('search-index.json');
     const data = await resp.json();
-    return data;
+
+    const resp2 = await fetch('search-index-one-char.json');
+    const data2 = await resp2.json();
+    return [data, data2];
 }
-const SearchIndexJson = await getJson();
+const [SearchIndexJson, SearchIndexOneCharJson] = await getJson();
 GoButton.disabled = false;
 
 
@@ -43,6 +46,29 @@ const nomalizer = (text) => { //index側と同じbigramにする
         seen.add(item);
         return true;
     });
+
+    const bigram = [];
+    const bigrams = [];
+    for (const chunk of chunks) {
+        if (breakmarks.has(chunk[0])) {
+            if (bigram.length != 0) {
+                bigrams.push([...bigram]);
+                bigram.splice(0);
+            }
+        } else if (chunk.length === 1) {
+            bigram.push(chunk + PAD);
+        } else {
+            for (let i = 0; i < chunk.length - 1; i++) {
+                bigram.push(chunk.slice(i, i + 2));
+            }
+        }
+    }
+    if (bigram.length != 0) bigrams.push(bigram);
+
+    return bigrams;
+}
+
+const advanced_keyword = (original) => {
     console.log(chunks);
     //1. 5文字以下の日本語キーワードの処理
     //2. ひらがな、カタカナ、漢字、その他 の区切り位置で分割したものを生成
@@ -130,28 +156,7 @@ const nomalizer = (text) => { //index側と同じbigramにする
         chunks.push(...cleaned_put_into_chunks);
         console.log("追加: ", cleaned_put_into_chunks, chunks);
     }
-
-    const bigram = [];
-    const bigrams = [];
-    for (const chunk of chunks) {
-        if (breakmarks.has(chunk[0])) {
-            if (bigram.length != 0) {
-                bigrams.push([...bigram]);
-                bigram.splice(0);
-            }
-        } else if (chunk.length === 1) {
-            bigram.push(chunk + PAD);
-        } else {
-            for (let i = 0; i < chunk.length - 1; i++) {
-                bigram.push(chunk.slice(i, i + 2));
-            }
-        }
-    }
-    if (bigram.length != 0) bigrams.push(bigram);
-
-    return bigrams;
 }
-
 
 const query_scorer = (page_bigrams, query_bigram, character_count) => {
     let score = 0;
@@ -174,7 +179,11 @@ const query_scorer = (page_bigrams, query_bigram, character_count) => {
             const check_q = query_bigram.slice(start_i, end_i);
             //check_qが合致した個数を調べる
             let count = 0;
+            let is_one_char = false;
+            let query_quality;
             if (query_length === 1 && query_bigram[0][1] === "\uE000") {
+                query_quality = SearchIndexOneCharJson[query_bigram[0][0]] || 0;
+                is_one_char = true;
                 for (let n = 0; n < page_length; n++) {
                     if (page_bigrams[n][0] === "\uE000\uE000" && n != 0) {
                         if (page_bigrams[n-1][0][1] === query_bigram[0][0]) count++;
@@ -182,6 +191,7 @@ const query_scorer = (page_bigrams, query_bigram, character_count) => {
                     if (page_bigrams[n][0][0] === query_bigram[0][0]) count++; 
                 }
             } else {
+                is_one_char = false;
                 for (let n = 0; n <= page_length - using_length; n++) {
                     const is_match = check_q.every((val, i) => page_bigrams[n + i][0] === val);
                     if (is_match) count++;
@@ -189,7 +199,8 @@ const query_scorer = (page_bigrams, query_bigram, character_count) => {
             }
             if (mach_ratio >= 0.75) is_over_75 ||= count > 0;//75%以上の適合のうち、合致が見つかったとき
             const adjusted_count = Math.log2(1 + count) / Math.log2(character_count); //青天井対策+文章長に合わせて調整
-            score += adjusted_count * mach_score;
+            if (is_one_char) {score += adjusted_count * mach_score * query_quality; console.log("1文字:", query_quality);}
+            else score += adjusted_count * mach_score;
             start_i++;
             end_i = start_i + using_length;
         }
@@ -240,6 +251,8 @@ const search = async () => {
     const mean = scores.reduce((sum, item) => sum + item.score, 0) / scores.length;
     const variance = scores.reduce((sum, item) => sum + (item.score - mean) ** 2, 0) / scores.length;
     const stdDev = Math.sqrt(variance);
+    console.log("");
+    console.log("標準偏差: ", stdDev);
     scores.forEach((s) => {
         s.deviation = stdDev === 0 ? 50 : ((s.score - mean) / stdDev) * 10 + 50;
     });
