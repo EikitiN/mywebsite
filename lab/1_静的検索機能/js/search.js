@@ -180,7 +180,7 @@ const query_scorer = (page_bigrams, query_bigram, character_count) => {
             //check_qが合致した個数を調べる
             let count = 0;
             let is_one_char = false;
-            let query_quality;
+            let query_quality; //1文字のときの評価用
             if (query_length === 1 && query_bigram[0][1] === "\uE000") {
                 query_quality = SearchIndexOneCharJson[query_bigram[0][0]] || 0;
                 is_one_char = true;
@@ -197,9 +197,9 @@ const query_scorer = (page_bigrams, query_bigram, character_count) => {
                     if (is_match) count++;
                 }
             }
-            if (mach_ratio >= 0.75) is_over_75 ||= count > 0;//75%以上の適合のうち、合致が見つかったとき
+            if (mach_ratio >= 0.75 && !is_one_char) is_over_75 ||= count > 0;//75%以上の適合のうち、合致が見つかったとき
             const adjusted_count = Math.log2(1 + count) / Math.log2(character_count); //青天井対策+文章長に合わせて調整
-            if (is_one_char) {score += adjusted_count * mach_score * query_quality; console.log("1文字:", query_quality);}
+            if (is_one_char) score += adjusted_count * mach_score * query_quality;
             else score += adjusted_count * mach_score;
             start_i++;
             end_i = start_i + using_length;
@@ -208,7 +208,7 @@ const query_scorer = (page_bigrams, query_bigram, character_count) => {
         using_length++;
     }
     //クエリサイズによる違いの消去
-    const final_score = 84*score / ((query_length + 2)*(query_length + 2)) + (query_length / 10); //経験式, 長いやつをやや優遇
+    const final_score = 84*score / ((query_length + 2)*(query_length + 2)) + (query_length / 10 - (1 / (10*query_length))); //経験式, 長いやつをやや優遇
     //75%合致ボーナス
     const bonus_75 = over_75_ok > 0;
     //console.log(query_bigram, final_score)
@@ -216,6 +216,14 @@ const query_scorer = (page_bigrams, query_bigram, character_count) => {
 }
 
 const search = async () => {
+    const next_disp_button = document.getElementById('next_disp');
+    const other_disp_button = document.getElementById('other_disp');
+    next_disp_button.classList.add('no-disp');
+    other_disp_button.classList.add('no-disp');
+    next_disp_button.disabled = true;
+    other_disp_button.disabled = true;
+    output_div.innerHTML = "";
+
     const starttime = Date.now();
     //検索クエリ取得
     const query = search_input.value;
@@ -248,28 +256,104 @@ const search = async () => {
     scores.sort((a, b) => b.score - a.score);
 
     //偏差値算出(普遍的な内容か、特化した内容化の判別) => 必要なさそうだから消す
+    /*
     const mean = scores.reduce((sum, item) => sum + item.score, 0) / scores.length;
     const variance = scores.reduce((sum, item) => sum + (item.score - mean) ** 2, 0) / scores.length;
     const stdDev = Math.sqrt(variance);
     console.log("");
     console.log("標準偏差: ", stdDev);
     scores.forEach((s) => {
-        s.deviation = stdDev === 0 ? 50 : ((s.score - mean) / stdDev) * 10 + 50;
+        s.deviation = stdDev < 1e-10 ? 50 : ((s.score - mean) / stdDev) * 10 + 50;
     });
+    */
+
+    const priority_disp = []; //優先的表示
+    const follows_disp = []; //「続きを表示」で表示
+    const other_disp = []; //「すべて表示」で表示
+    const border_score = scores[0].score * 0.35;
+    for (const one_score of scores) {
+        const this_score = one_score.score;
+        if (this_score < 1.0 || this_score < border_score) other_disp.push(one_score);
+        else if (priority_disp.length < 10) priority_disp.push(one_score);
+        else follows_disp.push(one_score);
+    }
+
+    console.log("優先: ", priority_disp);
+    console.log("追従: ", follows_disp);
+    console.log("全体: ", other_disp);
+
+    //優先に該当するものがなければ追加検索
+    if (priority_disp.length === 0) {
+
+    }
 
     const processingtime = Date.now() - starttime;
 
+    let priority_text = "";
+    let follows_text  = "";
+    let other_text = "";
+
+    if (devmode) priority_text += `<p>処理時間: ${processingtime} ms</p>`;
+    for (const one_result of priority_disp) {
+        priority_text += `<a href="/mywebsite/${one_result.path}"><p>${one_result.title}`;
+        if (devmode) {
+            priority_text+= ` | score: ${(one_result.score).toFixed(2)}`;
+        }
+        priority_text += `</p></a>`;
+    }
+    for (const one_result of follows_disp) {
+        follows_text += `<a href="/mywebsite/${one_result.path}"><p>${one_result.title}`;
+        if (devmode) {
+            follows_text += ` | score: ${(one_result.score).toFixed(2)}`;
+        }
+        follows_text += `</p></a>`;
+    }
+    for (const one_result of other_disp) {
+        other_text += `<a href="/mywebsite/${one_result.path}"><p class="search-other">${one_result.title}`;
+        if (devmode) {
+            other_text += ` | score: ${(one_result.score).toFixed(2)}`;
+        }
+        other_text += `</p></a>`;
+    }
+
+    const displaying_other = () => {
+        output_div.innerHTML = priority_text + follows_text + other_text;
+        other_disp_button.classList.add('no-disp');
+        other_disp_button.disabled = true;
+    }
+
+    output_div.innerHTML = priority_text;
+    if (follows_text) {
+        next_disp_button.classList.remove('no-disp');
+        next_disp_button.disabled = false;
+        next_disp_button.addEventListener('click', () => {
+            output_div.innerHTML = priority_text + follows_text;
+            next_disp_button.classList.add('no-disp');
+            next_disp_button.disabled = true;
+            other_disp_button.classList.remove('no-disp');
+            other_disp_button.disabled = false;
+            other_disp_button.addEventListener('click', displaying_other, {once: true});
+        }, {once: true});
+    } else if (other_text) {
+        other_disp_button.classList.remove('no-disp');
+        other_disp_button.disabled = false;
+        other_disp_button.addEventListener('click', displaying_other, {once: true});
+    }
+
+    //旧
+    /*
     let output_text = "";
     if (devmode) output_text += `<p>処理時間: ${processingtime} ms</p>`;
     for (const one_result of scores) {
         output_text += `<a href="/mywebsite/${one_result.path}"><p>${one_result.title}`;
         if (devmode) {
-            output_text += ` | 偏差値: ${(one_result.deviation).toFixed(2)} | score: ${(one_result.score).toFixed(2)}`;
-            console.log(one_result.title, one_result.deviation, one_result.score);
+            output_text += ` | score: ${(one_result.score).toFixed(2)}`;
+            //console.log(one_result.title, one_result.deviation, one_result.score);
         }
         output_text += `</p></a>`;
     }
     output_div.innerHTML = output_text;
+    */
 }
 
 GoButton.addEventListener('click', async () => {

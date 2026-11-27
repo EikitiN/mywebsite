@@ -1,0 +1,14 @@
+button.disp-button{
+    border: none;
+    background-color: transparent;
+}
+button.disp-button:active{
+    color: gray;
+}
+button.disp-button.no-disp{
+    display: none;
+}
+p.search-other{
+    color: #333;
+    font-size: 11.5pt;
+}
