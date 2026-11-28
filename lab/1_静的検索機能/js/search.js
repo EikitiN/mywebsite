@@ -68,96 +68,6 @@ const nomalizer = (text) => { //index側と同じbigramにする
     return bigrams;
 }
 
-const advanced_keyword = (original) => {
-    console.log(chunks);
-    //1. 5文字以下の日本語キーワードの処理
-    //2. ひらがな、カタカナ、漢字、その他 の区切り位置で分割したものを生成
-    //3. ひらがなをカタカナにしたもの、カタカナを平仮名にしたものを生成
-    //↓
-    //うまくいかなかったから(スコアが低くなるだけ)、5文字以内の日本語ならひらがな、カタカナを入れ替えたものを追加
-    //3文字以内なら各文字に分割 に変更
-    //追加検証としてスコアを足し算するようにする＜ー明日
-    let put_into_chunks = [];
-    let japaneseRegex;
-    try {
-        japaneseRegex = new RegExp("[\\p{Script=Hiragana}\\p{Script=Katakana}\\p{Script=Han}]", "u");
-    } catch (e) {
-        japaneseRegex = /[ぁ-んァ-ヶー一-龠々ｦ-ﾟ]/;
-    }
-    for (const chunk of chunks) {
-        continue; //いったん機能をオフにしておく
-        if ([...breakmarks].some((char) => chunk.includes(char))) continue; //区切り文字だったらやらない
-        if ([...chunk].length >= 6) continue; //6文字以上だったらやらない
-        if (!japaneseRegex.test(chunk)) continue; //日本語じゃなかったらやらない
-        const swapped = chunk.replace(/[ぁ-ゖァ-ヶ]/g, (s) => {
-            const code = s.charCodeAt(0);
-            return String.fromCharCode(code >= 0x30A1 ? code - 0x60 : code + 0x60);
-        });
-        put_into_chunks.push(swapped);
-        /*
-        if ([...chunk].length >= 4) continue; //4文字以上だったらやらない
-        put_into_chunks.push(...[...chunk]);
-        */
-        /*
-        const getCharType = (char) => {
-            if (/[ぁ-ん]/.test(char)) return "hiragana";
-            if (/[ァ-ヶーｦ-ﾟ]/.test(char)) return "katakana";
-            if (/[一-龠々〆ヵヶ]/.test(char) || char.codePointAt(0) > 0xFFFF) return "kanji";
-            return "other";
-        };
-
-        const hiraToKana = (str) =>
-            str.replace(/[ぁ-ゖ]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0x60));
-
-        const kanaToHira = (str) =>
-            str.replace(/[ァ-ヶ]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0x60));
-
-        //文字種が変わる位置での切り替え
-        const splitParts = [];
-        let currentPart = "";
-        let prevType = null;
-
-        for (const char of chunk) {
-            const type = getCharType(char);
-            if (prevType !== null && type !== prevType) {
-            splitParts.push(currentPart);
-            currentPart = char;
-            } else {
-            currentPart += char;
-            }
-            prevType = type;
-        }
-        if (currentPart) splitParts.push(currentPart);
-
-        if (splitParts.length > 1) {
-            put_into_chunks.push(...splitParts);
-        }
-
-        //ひらがな、カタカナの処理
-        for (const part of splitParts) {
-            const type = getCharType([...part][0]);
-            if (type === "hiragana") {
-            put_into_chunks.push(hiraToKana(part));
-            } else if (type === "katakana") {
-            put_into_chunks.push(kanaToHira(part));
-            }
-        }
-        */
-    }
-    //put_into_chunksの重複削除
-    if (put_into_chunks.length > 0) {
-        const seen = new Set(chunks);
-        const cleaned_put_into_chunks = put_into_chunks.filter(item => {
-            if (item === " ") return true;
-            if (seen.has(item)) return false;
-            seen.add(item);
-            return true;
-        });
-        chunks.push(...cleaned_put_into_chunks);
-        console.log("追加: ", cleaned_put_into_chunks, chunks);
-    }
-}
-
 const query_scorer = (page_bigrams, query_bigram, character_count) => {
     let score = 0;
     const page_length = page_bigrams.length;
@@ -215,11 +125,99 @@ const query_scorer = (page_bigrams, query_bigram, character_count) => {
     return [final_score, bonus_75];
 }
 
+const advanced_keyword = (chunks) => {
+    //console.log(chunks);
+    //1. 5文字以下の日本語キーワードの処理
+    //2. ひらがな、カタカナ、漢字、その他 の区切り位置で分割したものを生成
+    //3. ひらがなをカタカナにしたもの、カタカナを平仮名にしたものを生成
+    //↓
+    //うまくいかなかったから(スコアが低くなるだけ)、5文字以内の日本語ならひらがな、カタカナを入れ替えたものを追加
+    //各文字に分割 に変更
+    //追加検証としてスコアを足し算するようにする＜ー明日
+    let japaneseRegex;
+    try {
+        japaneseRegex = new RegExp("[\\p{Script=Hiragana}\\p{Script=Katakana}\\p{Script=Han}]", "u");
+    } catch (e) {
+        japaneseRegex = /[ぁ-んァ-ヶー一-龠々ｦ-ﾟ]/;
+    }
+    const additional_bigram = []; //追加検証用bigram
+    const unigram = new Set(); //追加検証用unigram
+    for (const chunk of chunks) {
+        if (chunk.length === 0) continue;
+        const chunk_character_count = chunk[chunk.length - 1][1] === "\uE000" ? chunk.length : chunk.length + 1;
+        const raw_chunk = chunk.join("");
+        if ([...breakmarks].some((char) => raw_chunk.includes(char))) continue; //区切り文字だったらやらない
+        if (chunk_character_count >= 6) continue; //6文字以上だったらやらない
+        if (!japaneseRegex.test(raw_chunk)) continue; //日本語じゃなかったらやらない
+        
+        const swapped_bigram = [];
+        for (const one_bigram of chunk) swapped_bigram.push(one_bigram.replace(/[ぁ-ゖァ-ヶ]/g, (s) => {
+            const code = s.charCodeAt(0);
+            return String.fromCharCode(code >= 0x30A1 ? code - 0x60 : code + 0x60);
+        }))
+        additional_bigram.push(swapped_bigram);
+
+        for (const char of raw_chunk) unigram.add(char);
+    }
+    //console.log(additional_bigram);
+    //console.log(unigram);
+
+    const path_bigram = {};
+    const scores = [];
+    const result = {};
+    for (const index of SearchIndexJson) { //ページごとにスコアを算出
+        const this_page = {};
+        const character_count = index["character_count"];
+        this_page["path"] = index["path"];
+        this_page["title"] = index["title"];
+        this_page["score"] = 0;
+
+        const page_bigrams = index["bigrams"];
+        let is_75_bonus = 0;
+        const query_size = additional_bigram.length;
+        for (const q_bigram of additional_bigram) { //ある検索クエリに対する評価
+            const [q_score, bonus_75] = query_scorer(page_bigrams, q_bigram, character_count);
+            if (bonus_75) is_75_bonus++;
+            this_page["score"] += bonus_75 ? q_score + 2 : q_score; //キーワード中75%以上当てはまったならボーナス
+            //console.log(this_page["path"], q_bigram, q_score);
+        }
+        //検索クエリのうち、75%以上の合致度のあったクエリが全体の数の75%を超えたらさらにボーナス
+        if (is_75_bonus / query_size >= 0.75) this_page["score"] *= 1.5;
+        scores.push(this_page);
+        path_bigram[this_page.path] = [page_bigrams, character_count];
+    }
+    //console.log(scores);
+    const uni_score = {};
+    for (const original_score of [...scores]) {
+        const this_path = original_score.path;
+        const page_bigrams = path_bigram[this_path][0];
+        const character_count = path_bigram[this_path][1];
+        let q_score = 0;
+        for (let i = 0; i < page_bigrams.length; i++) {
+            let char = [page_bigrams[i][0][0], page_bigrams[i][1]];
+            if (char === "\uE000" && i !== 0) char = [page_bigrams[i-1][1], page_bigrams[i-1][1]];
+            for (const unigram_char of unigram) {
+                const unigram_quality = SearchIndexOneCharJson[unigram_char] ?? 0;
+                if (char[0] === unigram_char) {
+                    q_score += char[1] * unigram_quality;
+                }
+            }
+        }
+        const adjusted_score = Math.log2(1 + q_score) / Math.log2(character_count);
+        uni_score[this_path] = adjusted_score;
+    }
+    for (const score of scores) {
+        result[score.path] = score.score + uni_score[score.path];
+    }
+    return result;
+}
+
 const search = async () => {
     const next_disp_button = document.getElementById('next_disp');
     const other_disp_button = document.getElementById('other_disp');
-    next_disp_button.classList.add('no-disp');
-    other_disp_button.classList.add('no-disp');
+    const now_searching = document.getElementById('now_searching');
+    next_disp_button.classList.add('disp-none');
+    other_disp_button.classList.add('disp-none');
     next_disp_button.disabled = true;
     other_disp_button.disabled = true;
     output_div.innerHTML = "";
@@ -278,13 +276,31 @@ const search = async () => {
         else follows_disp.push(one_score);
     }
 
-    console.log("優先: ", priority_disp);
-    console.log("追従: ", follows_disp);
-    console.log("全体: ", other_disp);
+    //console.log("優先: ", priority_disp);
+    //console.log("追従: ", follows_disp);
+    //console.log("全体: ", other_disp);
 
     //優先に該当するものがなければ追加検索
+    let advanced_result;
+    let is_advanced = false;
     if (priority_disp.length === 0) {
-
+        is_advanced = true;
+        advanced_result = advanced_keyword(query_bigrams);
+        for (let i = 0; i < scores.length; i++) {
+            const this_path = scores[i].path;
+            scores[i].score += advanced_result[this_path] || 0;
+        }
+        scores.sort((a, b) => b.score - a.score);
+        priority_disp.length = 0;
+        follows_disp.length = 0;
+        other_disp.length = 0;
+        const border_score_2 = scores[0].score * 0.35;
+        for (const one_score of scores) {
+            const this_score = one_score.score;
+            if (this_score < 1.0 || this_score < border_score_2) other_disp.push(one_score);
+            else if (priority_disp.length < 10) priority_disp.push(one_score);
+            else follows_disp.push(one_score);
+        }
     }
 
     const processingtime = Date.now() - starttime;
@@ -294,6 +310,8 @@ const search = async () => {
     let other_text = "";
 
     if (devmode) priority_text += `<p>処理時間: ${processingtime} ms</p>`;
+    if (is_advanced) priority_text += `<p>この結果の精度は低い可能性があります。</p>`;
+    if (priority_disp.length === 0) priority_text += `<p>結果が見つかりませんでした。キーワードを変えてもう一度試してください。</p>`;
     for (const one_result of priority_disp) {
         priority_text += `<a href="/mywebsite/${one_result.path}"><p>${one_result.title}`;
         if (devmode) {
@@ -318,24 +336,24 @@ const search = async () => {
 
     const displaying_other = () => {
         output_div.innerHTML = priority_text + follows_text + other_text;
-        other_disp_button.classList.add('no-disp');
+        other_disp_button.classList.add('disp-none');
         other_disp_button.disabled = true;
     }
 
     output_div.innerHTML = priority_text;
     if (follows_text) {
-        next_disp_button.classList.remove('no-disp');
+        next_disp_button.classList.remove('disp-none');
         next_disp_button.disabled = false;
         next_disp_button.addEventListener('click', () => {
             output_div.innerHTML = priority_text + follows_text;
-            next_disp_button.classList.add('no-disp');
+            next_disp_button.classList.add('disp-none');
             next_disp_button.disabled = true;
-            other_disp_button.classList.remove('no-disp');
+            other_disp_button.classList.remove('disp-none');
             other_disp_button.disabled = false;
             other_disp_button.addEventListener('click', displaying_other, {once: true});
         }, {once: true});
     } else if (other_text) {
-        other_disp_button.classList.remove('no-disp');
+        other_disp_button.classList.remove('disp-none');
         other_disp_button.disabled = false;
         other_disp_button.addEventListener('click', displaying_other, {once: true});
     }
@@ -358,6 +376,9 @@ const search = async () => {
 
 GoButton.addEventListener('click', async () => {
     GoButton.disabled = true;
-    await search();
-    GoButton.disabled = false;
+    try {
+        await search();
+    } finally {
+        GoButton.disabled = false;
+    }
 });
